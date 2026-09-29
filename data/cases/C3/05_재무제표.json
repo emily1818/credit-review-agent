@@ -1,0 +1,53 @@
+{
+ "_meta": {
+  "title": "재무제표 요약(연결) 2023~2025",
+  "company": "㈜호텔신라",
+  "unit": "억원",
+  "synthetic": true,
+  "note": "PoC 시연용 가상 수치. DART 연결 시 공시 수치로 대체·대사됨"
+ },
+ "years": {
+  "2023": {
+   "revenue": 38000,
+   "operating_income": 900,
+   "net_income": 500,
+   "total_assets": 30000,
+   "total_liabilities": 21000,
+   "total_equity": 9000,
+   "borrowings": 12000,
+   "interest_expense": 450,
+   "depreciation": 1300,
+   "operating_cf": 2000,
+   "cash": 1800,
+   "annual_debt_service": 2100
+  },
+  "2024": {
+   "revenue": 41000,
+   "operating_income": 1100,
+   "net_income": 650,
+   "total_assets": 30500,
+   "total_liabilities": 20300,
+   "total_equity": 10200,
+   "borrowings": 12300,
+   "interest_expense": 480,
+   "depreciation": 1350,
+   "operating_cf": 2200,
+   "cash": 1900,
+   "annual_debt_service": 2100
+  },
+  "2025": {
+   "revenue": 43000,
+   "operating_income": 1250,
+   "net_income": 760,
+   "total_assets": 30500,
+   "total_liabilities": 19500,
+   "total_equity": 11000,
+   "borrowings": 12500,
+   "interest_expense": 500,
+   "depreciation": 1400,
+   "operating_cf": 2400,
+   "cash": 2000,
+   "annual_debt_service": 2100
+  }
+ }
+}

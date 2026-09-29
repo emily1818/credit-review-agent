@@ -1,0 +1,51 @@
+{
+ "_meta": {
+  "title": "시공사 책임준공 약정 관리현황 (가상)",
+  "as_of": "2026-09-28",
+  "synthetic": true
+ },
+ "contractors": {
+  "GS건설": {
+   "commitment_limit_krw_100m": 5000,
+   "commitment_used_krw_100m": 4380,
+   "sanction_history": [
+    {
+     "year": 2023,
+     "event": "인천 검단 아파트 지하주차장 붕괴사고 관련 행정처분",
+     "source": "공개 보도"
+    }
+   ]
+  },
+  "DL이앤씨": {
+   "commitment_limit_krw_100m": 6000,
+   "commitment_used_krw_100m": 2100,
+   "sanction_history": []
+  },
+  "삼성물산": {
+   "commitment_limit_krw_100m": 8000,
+   "commitment_used_krw_100m": 3000,
+   "sanction_history": []
+  },
+  "대우건설": {
+   "commitment_limit_krw_100m": 4000,
+   "commitment_used_krw_100m": 1800,
+   "sanction_history": []
+  },
+  "현대건설": {
+   "commitment_limit_krw_100m": 9000,
+   "commitment_used_krw_100m": 7600,
+   "sanction_history": []
+  },
+  "HDC현대산업개발": {
+   "commitment_limit_krw_100m": 5000,
+   "commitment_used_krw_100m": 2600,
+   "sanction_history": [
+    {
+     "year": 2022,
+     "event": "광주 화정 아이파크 외벽 붕괴사고 관련 행정처분",
+     "source": "공개 보도"
+    }
+   ]
+  }
+ }
+}

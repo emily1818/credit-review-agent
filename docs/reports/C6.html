@@ -1,0 +1,225 @@
+<title>이마트 여신심사 보고서</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 좌측 Agent 실행 요약(sticky) + 우측 심사보고서 본문 */
+:root{--bg:#f3f4f2;--paper:#fff;--ink:#15212b;--muted:#5d6a73;--line:#d9dedd;--accent:#1f5f6b;--accent-soft:#e2eeef;
+--ok:#2d7a4b;--ok-soft:#e3f1e8;--warn:#a86a10;--warn-soft:#faf0dc;--bad:#b0392f;--bad-soft:#f8e4e1;--mask:#e8ebea;--real:#2b5aa8;--real-soft:#e3ebf8;
+--f-display:"Noto Serif KR","Apple SD Gothic Neo",serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1519;--paper:#161e23;--ink:#e3e8ea;--muted:#95a3ab;--line:#2a353c;--accent:#6fb3bf;--accent-soft:#1c3237;--ok:#6cc08c;--ok-soft:#1a2f23;--warn:#e0a54a;--warn-soft:#33281a;--bad:#e57c72;--bad-soft:#3a201e;--mask:#232d33;--real:#86a9e8;--real-soft:#1d2940;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1519;--paper:#161e23;--ink:#e3e8ea;--muted:#95a3ab;--line:#2a353c;--accent:#6fb3bf;--accent-soft:#1c3237;--ok:#6cc08c;--ok-soft:#1a2f23;--warn:#e0a54a;--warn-soft:#33281a;--bad:#e57c72;--bad-soft:#3a201e;--mask:#232d33;--real:#86a9e8;--real-soft:#1d2940;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.65}
+a{color:var(--accent)}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:16px;padding-block:20px 60px}
+.note{font-size:12px;color:var(--warn);background:var(--warn-soft);border-radius:6px;padding:8px 12px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px;font-size:12.5px}
+@media (max-width:900px){aside{position:static}}
+aside h2{font-size:12px;letter-spacing:.06em;margin:0 0 10px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.stats div{background:var(--bg);border-radius:6px;padding:8px}.stats small{display:block;font-size:10.5px;color:var(--muted)}
+.stats b{font-family:var(--f-mono);font-size:16px;font-weight:500}
+aside ul{margin:4px 0 12px;padding-left:16px}
+.legend{display:flex;flex-wrap:wrap;gap:6px}
+main{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:clamp(18px,4vw,44px);min-width:0}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:22px}
+.head h1{font-family:var(--f-display);font-size:clamp(22px,3vw,28px);margin:0;line-height:1.3;text-wrap:balance}
+.head .meta{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);text-align:right}
+@media (max-width:600px){.head .meta{text-align:left}}
+.stamp{display:inline-block;border:1.5px solid var(--bad);color:var(--bad);font-size:11px;font-weight:600;padding:1px 8px;border-radius:3px;letter-spacing:.06em;margin-bottom:6px}
+.stamp.done{border-color:var(--ok);color:var(--ok)}
+h3{font-family:var(--f-display);font-size:17px;margin:36px 0 10px;display:flex;gap:10px;align-items:baseline}
+h3 .n{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-weight:500}
+h4.sub{font-size:13px;margin:14px 0 4px}
+p{margin:0 0 10px;max-width:74ch}.muted{color:var(--muted);font-size:12px}
+.tbl-wrap{overflow-x:auto;margin:6px 0 8px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:12px;background:var(--bg);white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono);white-space:nowrap}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));column-gap:24px;border-top:1px solid var(--line);margin:0}
+.kv div{display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.kv dt{color:var(--muted);font-size:12px}.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.verdict{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;background:var(--accent-soft);border-radius:8px;padding:18px}
+@media (max-width:600px){.verdict{grid-template-columns:1fr}}
+.grade{min-width:120px}.grade small{display:block;font-size:11px;color:var(--muted)}
+.grade b{font-family:var(--f-display);font-size:22px;color:var(--accent);display:block;line-height:1.3}
+.verdict ol{margin:8px 0 0;padding-left:20px;font-size:13px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.metric{border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.metric small{display:block;font-size:11.5px;color:var(--muted)}.metric b{font-family:var(--f-mono);font-size:18px;font-weight:500;margin-right:4px}
+.pill{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 8px;border-radius:999px;white-space:nowrap}
+.pill.h{background:var(--bad-soft);color:var(--bad)}.pill.m{background:var(--warn-soft);color:var(--warn)}
+.pill.l{background:var(--ok-soft);color:var(--ok)}.pill.q{background:var(--mask);color:var(--muted)}
+.pill.k-real{background:var(--real-soft);color:var(--real)}.pill.k-syn{background:var(--mask);color:var(--muted)}.pill.k-reg{background:var(--accent-soft);color:var(--accent)}
+.cite{font-family:var(--f-mono);font-size:10.5px;color:var(--accent);background:var(--accent-soft);border:0;border-radius:3px;padding:0 4px;margin-left:2px;cursor:pointer;vertical-align:1px}
+.cite:hover{text-decoration:underline}
+.masked{background:var(--mask);color:var(--muted);border-radius:3px;padding:0 6px;font-size:12px;white-space:nowrap}
+.party{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.party article{border:1px solid var(--line);border-radius:8px;padding:14px;min-width:0}
+.party h4{margin:0;font-size:14px}.party .role{font-size:11px;color:var(--muted);letter-spacing:.04em}
+.party ul{margin:8px 0 0;padding-left:18px;font-size:12.5px}
+.hitl{border:1.5px solid var(--bad);border-radius:8px;padding:18px;background:var(--bad-soft)}
+.hitl label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:13px;cursor:pointer;border-bottom:1px dashed var(--line)}
+.hitl input{margin-top:4px;accent-color:var(--accent)}
+.hitl textarea{width:100%;min-height:64px;margin-top:10px;border:1px solid var(--line);border-radius:6px;padding:8px;font:inherit;font-size:13px;background:var(--paper);color:var(--ink)}
+.decide{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:6px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}.btn:disabled{opacity:.45;cursor:not-allowed}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.src{list-style:none;padding:0;margin:0;font-size:12.5px}
+.src li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px;padding:6px 8px;border-bottom:1px solid var(--line);border-radius:4px;transition:background .3s}
+.src li.flash{background:var(--accent-soft)}.src code{font-family:var(--f-mono);color:var(--accent);font-size:11.5px}
+.audit{font-family:var(--f-mono);font-size:11.5px;background:var(--bg);border-radius:6px;padding:10px 12px;max-height:300px;overflow:auto;white-space:pre-wrap;word-break:break-all;margin:0}
+.foot{font-size:11.5px;color:var(--muted);margin-top:28px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+<div class="wrap">
+<div class="note">PoC 결과물입니다. <b>실제</b> 표시 출처(한국은행 ECOS 금리, Google 뉴스, OpenDART)는 실행 시점에 조회한 실데이터이고, <b>가상</b> 표시 출처(차주 제출서류, 은행 내부자료, 사내 규정)는 시연용으로 만든 자료입니다. 가상 재무수치는 실제 공시와 다릅니다.</div>
+<div class="grid">
+<aside aria-label="Agent 실행 요약">
+  <h2>AGENT 실행 요약</h2>
+  <div class="stats">
+    <div><small>도구 호출</small><b>14</b></div><div><small>등록 출처</small><b>35</b></div>
+    <div><small>실데이터</small><b>16</b></div><div><small>가상자료</small><b>8</b></div>
+    <div><small>규정 조문</small><b>11</b></div><div><small>권한 거부</small><b>0</b></div>
+    <div><small>Fallback</small><b>1</b></div><div><small>사람 확인</small><b>6</b></div>
+  </div>
+  <h2>FALLBACK 내역</h2><ul><li>재무제표 → 차주 제출본 대체</li></ul>
+  <h2>출처 구분</h2>
+  <div class="legend"><span class="pill k-real">실제</span><span class="pill k-syn">제출·가상</span><span class="pill k-syn">내부·가상</span><span class="pill k-reg">규정·가상</span></div>
+</aside>
+<main id="report">
+  <div class="head">
+    <div><span class="stamp" id="stamp">AI 초안 · 심사역 검토 전</span>
+      <h1>기업여신 심사보고서<br>이마트 하남 복합쇼핑몰 증축</h1></div>
+    <div class="meta">문서번호 CR-2026-C6<br>작성 규칙 기반(offline)<br>생성 2026-09-29 17:27<br>열람 권한 심사역<br>결재 <span id="reviewer">대기</span></div>
+  </div>
+
+  <h3><span class="n">1</span>신청 개요</h3>
+  <dl class="kv"><div><dt>차주</dt><dd>㈜이마트 (대형 유통) <button class="cite" data-src="SUB-01">SUB-01</button></dd></div><div><dt>사업명</dt><dd>이마트 하남 복합쇼핑몰 증축</dd></div><div><dt>여신과목</dt><dd>시설자금대출 (신규)</dd></div><div><dt>신청금액</dt><dd>550억원</dd></div><div><dt>기간</dt><dd>5년 (거치 2년, 연 10% 분할상환)</dd></div><div><dt>자금용도</dt><dd>이마트 하남 복합쇼핑몰 증축 공사비 및 부대비용</dd></div><div><dt>담보</dt><dd>사업부지 및 신축건물 1순위 근저당</dd></div><div><dt>시공사</dt><dd>HDC현대산업개발</dd></div><div><dt>설계</dt><dd>▽▽건축사사무소</dd></div><div><dt>총사업비</dt><dd>935억원 (자기자금 385억)</dd></div><div><dt>내부등급</dt><dd>A- (CSS 74점, PD 0.6%) <button class="cite" data-src="INT-02">INT-02</button></dd></div><div><dt>신청금리</dt><dd>CD(91일) + 2.00%p</dd></div><div><dt>적용금리(안)</dt><dd>CD 3.22% (20260929) + 1.70%p = <b>4.92%</b> <button class="cite" data-src="ECOS-CD91">ECOS-CD91</button></dd></div></dl>
+
+  <h3><span class="n">2</span>종합의견</h3>
+  <div class="verdict">
+    <div class="grade"><small>AI 권고</small><b>보류</b><small>최종 결정은 여신위원회</small></div>
+    <div><p>차주의 매출은 2023년 290,000억원에서 2025년 298,000억원으로 증가했고 부채비율은 133.1%이다 <button class="cite" data-src="SUB-05">SUB-05</button>. 준공 후 DSCR은 1.33배, 신규 사업 현금흐름을 빼면 1.33배로 기준 1.20배를 넘는다 <button class="cite" data-src="REG-02-8">REG-02-8</button>. 자기자금 비율은 41.2%로 기준 30% 이상이다 <button class="cite" data-src="REG-02-10">REG-02-10</button>. 필수 서류인 감정평가서가 제출되지 않아 관련 항목을 판단할 수 없다 <button class="cite" data-src="INPUT-1">INPUT-1</button>. 책임준공확약서가 제출되지 않아 준공 전 채권보전 수단이 없다 <button class="cite" data-src="SUB-03">SUB-03</button>. 시공사 관련 최근 기사 6건 중 부정 키워드 기사가 1건 있다 <button class="cite" data-src="NEWS-C6">NEWS-C6</button>. 기준 미달 또는 필수 서류 누락이 있어 보완 전까지 보류를 권고한다 <button class="cite" data-src="REG-01-12">REG-01-12</button>.</p><b style="font-size:13px">승인 조건</b><ol><li>감리자 확인 공정률에 연동한 분할인출 (시설자금 취급세칙 제14조)</li><li>도급계약 조정 조항에 따른 공사비 증액분 차주 자기부담 확약 (가이드 제7조)</li><li>감정평가서 제출</li><li>시공사 책임준공확약서 제출</li><li>재무약정: 부채비율 200% 이하 유지, 연 1회 점검</li><li>준공 후 재감정 및 건물 근저당 추가 설정</li></ol></div>
+  </div>
+
+  <h3><span class="n">3</span>시장금리 <span class="pill k-real">실제</span></h3>
+  <div class="tbl-wrap"><table><thead><tr><th>지표</th><th class="num">값</th><th class="num">기준일</th><th>조회</th><th>출처</th></tr></thead><tbody><tr><td>CD(91일)</td><td class='num'>3.22%</td><td class='num'>20260929</td><td>실시간</td><td><button class="cite" data-src="ECOS-CD91">ECOS-CD91</button></td></tr><tr><td>한국은행 기준금리</td><td class='num'>3.0%</td><td class='num'>202608</td><td>실시간</td><td><button class="cite" data-src="ECOS-BASERATE">ECOS-BASERATE</button></td></tr><tr><td>국고채(3년)</td><td class='num'>4.076%</td><td class='num'>20260929</td><td>실시간</td><td><button class="cite" data-src="ECOS-KTB3Y">ECOS-KTB3Y</button></td></tr><tr><td>예금은행 대기업대출 금리(신규)</td><td class='num'>4.18%</td><td class='num'>202607</td><td>실시간</td><td><button class="cite" data-src="ECOS-CORPLOANLARGE">ECOS-CORPLOANLARGE</button></td></tr></tbody></table></div>
+
+  <h3><span class="n">4</span>차주 재무분석 <span class="muted">(억원)</span></h3>
+  <p class="muted"><span class="pill m">Fallback</span> DART 미연결로 차주 제출본 사용 <button class="cite" data-src="SUB-05">SUB-05</button>. 공시 대사 전까지 잠정 수치입니다.</p>
+  <div class="tbl-wrap"><table><thead><tr><th>항목</th><th class='num'>2023</th><th class='num'>2024</th><th class='num'>2025</th></tr></thead><tbody><tr><td>매출액</td><td class='num'>290,000</td><td class='num'>295,000</td><td class='num'>298,000</td></tr><tr><td>영업이익</td><td class='num'>1,300</td><td class='num'>1,000</td><td class='num'>1,700</td></tr><tr><td>영업이익률</td><td class='num'>0.4%</td><td class='num'>0.3%</td><td class='num'>0.6%</td></tr><tr><td>EBITDA</td><td class='num'>14,300</td><td class='num'>14,000</td><td class='num'>14,700</td></tr><tr><td>부채총계</td><td class='num'>160,000</td><td class='num'>162,000</td><td class='num'>161,000</td></tr><tr><td>자본총계</td><td class='num'>120,000</td><td class='num'>119,000</td><td class='num'>121,000</td></tr><tr><td>부채비율</td><td class='num'>133.3%</td><td class='num'>136.1%</td><td class='num'>133.1%</td></tr><tr><td>차입금의존도</td><td class='num'>25.0%</td><td class='num'>25.4%</td><td class='num'>24.8%</td></tr><tr><td>이자보상배율</td><td class='num'>1.3배</td><td class='num'>1.0배</td><td class='num'>1.7배</td></tr><tr><td>영업활동현금흐름</td><td class='num'>16,000</td><td class='num'>15,500</td><td class='num'>16,500</td></tr></tbody></table></div>
+
+  <h3><span class="n">5</span>사업성 지표</h3>
+  <div class="metrics"><div class='metric'><small>총사업비</small><b>935억</b><button class="cite" data-src="SUB-02">SUB-02</button></div><div class='metric'><small>자기자금비율</small><b>41.2%</b><button class="cite" data-src="SUB-02">SUB-02</button></div><div class='metric'><small>신규 연 원리금(거치 후)</small><b>82.1억</b><button class="cite" data-src="SUB-01">SUB-01</button></div><div class='metric'><small>DSCR</small><b>1.33배</b><button class="cite" data-src="SUB-05">SUB-05</button></div><div class='metric'><small>DSCR (사업 현금흐름 제외)</small><b>1.33배</b><button class="cite" data-src="SUB-05">SUB-05</button></div><div class='metric'><small>준공 후 LTV</small><b>–</b></div><div class='metric'><small>토지가치 대비 대출</small><b>–</b></div><div class='metric'><small>대출 후 부채비율</small><b>133.5%</b><button class="cite" data-src="SUB-05">SUB-05</button></div></div>
+  <p class="muted" style="margin-top:8px">DSCR = (EBITDA + 사업 추가 현금흐름 임대수입 38억) ÷ (기존 원리금 + 신규 원리금). 사업 현금흐름 제외값은 EBITDA만 사용.</p>
+
+  <h3><span class="n">6</span>사업 참여자 검증</h3>
+  <div class="party"><article><div class='role'>차주·발주자</div><h4>㈜이마트</h4><ul><li>2011년부터 거래, 최근 12개월 연체 0건 <button class="cite" data-src="INT-01">INT-01</button></li><li>기존 여신 1,500억원, 예금 800억원 <button class="cite" data-src="INT-01">INT-01</button></li><li>재무자료: 차주 제출본 (DART 대사 필요) <button class="cite" data-src="SUB-05">SUB-05</button></li></ul></article><article><div class='role'>시공사</div><h4>HDC현대산업개발</h4><ul><li>도급액 560억원, 계약금액 조정 조항 있음 <button class="cite" data-src="SUB-03">SUB-03</button></li><li>책임준공 확약: 미제출 <button class="cite" data-src="SUB-03">SUB-03</button></li><li>2022년 광주 화정 아이파크 외벽 붕괴사고 관련 행정처분 <button class="cite" data-src="INT-03">INT-03</button></li><li>최근 기사 6건 중 부정 1건 <button class="cite" data-src="NEWS-C6">NEWS-C6</button></li></ul></article><article><div class='role'>설계</div><h4>▽▽건축사사무소</h4><ul><li>지하 3층 / 지상 6층, 연면적 58,000㎡ <button class="cite" data-src="SUB-02">SUB-02</button></li><li>용도: 판매시설(자가 70%, 임대 30%) <button class="cite" data-src="SUB-02">SUB-02</button></li></ul></article></div>
+
+  <h3><span class="n">7</span>문서 간 대사</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>항목</th><th>자료 A</th><th>자료 B</th><th class="num">차이(억)</th><th>결과</th></tr></thead><tbody><tr><td>공사비</td><td>사업계획서 560억 <button class="cite" data-src="SUB-02">SUB-02</button></td><td>도급계약서 560억 <button class="cite" data-src="SUB-03">SUB-03</button></td><td class='num'>0</td><td><span class="pill l">일치</span></td></tr><tr><td>대출금액</td><td>신청서 550억 <button class="cite" data-src="SUB-01">SUB-01</button></td><td>사업계획서 조달 550억 <button class="cite" data-src="SUB-02">SUB-02</button></td><td class='num'>0</td><td><span class="pill l">일치</span></td></tr><tr><td>차주명</td><td>이마트 <button class="cite" data-src="INPUT-1">INPUT-1</button></td><td>이마트 <button class="cite" data-src="SUB-01">SUB-01</button></td><td class='num'>–</td><td><span class="pill l">일치</span></td></tr><tr><td>차주 종목코드</td><td>139480 <button class="cite" data-src="INPUT-1">INPUT-1</button></td><td>139480 <button class="cite" data-src="SUB-01">SUB-01</button></td><td class='num'>–</td><td><span class="pill l">일치</span></td></tr><tr><td>시공사</td><td>HDC현대산업개발 <button class="cite" data-src="INPUT-1">INPUT-1</button></td><td>HDC현대산업개발 <button class="cite" data-src="SUB-01">SUB-01</button></td><td class='num'>–</td><td><span class="pill l">일치</span></td></tr></tbody></table></div>
+
+  <h3><span class="n">8</span>위험요인과 완화방안</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>위험요인</th><th>수준</th><th>근거</th><th>완화방안</th></tr></thead><tbody><tr><td>준공 전 채권보전</td><td><span class="pill h">높음</span></td><td>책임준공확약서가 제출되지 않았다 <button class="cite" data-src="SUB-03">SUB-03</button>.</td><td>확약서 원본·배상한도 보강</td></tr><tr><td>공사비 증액</td><td><span class="pill m">중간</span></td><td>도급계약 조정 조항 또는 문서 간 공사비 차이가 있다 <button class="cite" data-src="SUB-03">SUB-03</button>.</td><td>초과분 차주 자기부담 확약</td></tr><tr><td>차주 상환능력</td><td><span class="pill l">낮음</span></td><td>DSCR 1.33배 (사업 현금흐름 제외 1.33배) <button class="cite" data-src="SUB-05">SUB-05</button>.</td><td>재무약정 점검</td></tr><tr><td>담보가치</td><td><span class="pill h">높음</span></td><td>감정평가서가 제출되지 않아 담보가치를 확인할 수 없다 <button class="cite" data-src="INPUT-1">INPUT-1</button>.</td><td>감정평가서 징구</td></tr></tbody></table></div>
+
+  <h3><span class="n">9</span>내부규정 적합성</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>규정</th><th>기준</th><th class="num">결과</th><th>판정</th><th>비고</th></tr></thead><tbody><tr><td>여신업무규정 제24조 (재무기준)<br><button class="cite" data-src="REG-01-24">REG-01-24</button></td><td>신규 여신 반영 후 부채비율 200% 이하</td><td class='num'>133.5%</td><td><span class="pill l">적합</span></td><td></td></tr><tr><td>여신업무규정 제24조 (재무기준)<br><button class="cite" data-src="REG-01-24">REG-01-24</button></td><td>이자보상배율 2년 연속 1.5배 미만이면 위원회 승인</td><td class='num'>1.0배 / 1.7배</td><td><span class="pill l">적합</span></td><td></td></tr><tr><td>시설자금대출 취급세칙 제8조 (상환능력)<br><button class="cite" data-src="REG-02-8">REG-02-8</button></td><td>DSCR 1.20배 이상</td><td class='num'>1.33배 (사업현금흐름 제외 1.33배)</td><td><span class="pill l">적합</span></td><td></td></tr><tr><td>시설자금대출 취급세칙 제10조 (자기자금)<br><button class="cite" data-src="REG-02-10">REG-02-10</button></td><td>자기자금 30% 이상</td><td class='num'>41.2%</td><td><span class="pill l">적합</span></td><td></td></tr><tr><td>시설자금대출 취급세칙 제11조 (담보)<br><button class="cite" data-src="REG-02-11">REG-02-11</button></td><td>준공 후 LTV 70% 이하</td><td class='num'>감정평가서 미제출</td><td><span class="pill h">확인필요</span></td><td>감정평가서 징구 필요</td></tr><tr><td>시설자금대출 취급세칙 제11조 (담보)<br><button class="cite" data-src="REG-02-11">REG-02-11</button></td><td>준공 전 토지가치 미달 시 책임준공 등 신용보강</td><td class='num'>토지가치 미확인</td><td><span class="pill h">부적합</span></td><td>책임준공확약서 미제출</td></tr><tr><td>건설 관련 여신 심사가이드 제5조 (시공사 평가)<br><button class="cite" data-src="REG-03-5">REG-03-5</button></td><td>시공사 최근 3년 행정처분 이력 시 추가조건</td><td class='num'>2022년 이력(3년 경과)</td><td><span class="pill l">적합</span></td><td>참고 사항</td></tr><tr><td>건설 관련 여신 심사가이드 제5조 (시공사 평가)<br><button class="cite" data-src="REG-03-5">REG-03-5</button></td><td>시공사 책임준공 약정 한도 90% 이하</td><td class='num'>취급 후 63.0%</td><td><span class="pill l">적합</span></td><td></td></tr><tr><td>건설 관련 여신 심사가이드 제7조 (설계변경 리스크)<br><button class="cite" data-src="REG-03-7">REG-03-7</button></td><td>계약금액 조정 조항 시 차주 자기부담 확약</td><td class='num'>도급계약 조정 조항 있음</td><td><span class="pill m">조건부가</span></td><td>공사비 초과분 자기부담 확약</td></tr><tr><td>여신업무규정 제31조 (금리 결정)<br><button class="cite" data-src="REG-01-31">REG-01-31</button></td><td>A- 표준 가산금리 1.70%p ±0.20</td><td class='num'>신청 2.00%p</td><td><span class="pill h">확인필요</span></td><td>조정 범위 밖</td></tr><tr><td>여신업무규정 제40조 (전결권)<br><button class="cite" data-src="REG-01-40">REG-01-40</button></td><td>300억 초과 시 여신위원회 부의</td><td class='num'>550억</td><td><span class="pill q">위원회</span></td><td></td></tr></tbody></table></div>
+
+  <h3><span class="n">10</span>외부뉴스 <span class="pill k-real">실제</span></h3>
+  <p class="muted">부정·긍정 분류는 키워드 규칙이며, 기사 내용 판단은 심사역이 합니다.</p>
+  <h4 class='sub'>이마트</h4><div class='tbl-wrap'><table><tbody><tr><td class='num'>2026-09-29</td><td><a href='https://news.google.com/rss/articles/CBMiaEFVX3lxTE1KNkF4MlRFaXZoSnJHSEJyV3lEdFBOengwUHJHRUpYdGFyR043S1lFWlRWVThoTUlPNjNVR3VINVNiLWxPTFRNQ1BrWmVpU0hUUDhGLVV4eUp0aDQ2Q0Iya3F5Q3ZMa2p1?oc=5' target='_blank' rel='noopener'>이마트, 10월1∼5일 &#x27;고래잇페스타&#x27;…햇고구마부터 주류할인까지</a> <span class='muted'>문화투데이</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-B1">NEWS-B1</button></td></tr><tr><td class='num'>2026-09-29</td><td><a href='https://news.google.com/rss/articles/CBMiigFBVV95cUxQZmRNSE4xNGVqQ19VYk5acDFGOFFhM2dHdkVaMUlLY2Z1bGsxa0QyVFpuQktzMDVodmhoMkRpUldwbHd4UlNKN05hd2N1SXRWN2U4aFJMcGQzQ196R3A5Y2RWZ1RRdVF1d1Zkd29UVVRpWTV3Wk9ITXV3NDJXdHRTRkhVQ3llZk9UQkHSAZ4BQVVfeXFMUERlYXBfVUlOdE9uVFhXT1JjcWJSam9wS2pMY3N2Y2tJYnpNOXBXLVdzQXU5UHBSbEs0eGdaalRnRFc3TklPQkctM3BtQzNIWHZkUVdRd01xRjVUWTJqb19TaV83N0xUS3dFQ3RKQy1tUElIZEVlcHpaUS05a1B6OUE0clVJSndCSjZic1BtYm1zZU1QR09UXy1FRjF1Umc?oc=5' target='_blank' rel='noopener'>홈플러스 힘 못 쓴 추석 대목, 이마트 웃었다 - 조선비즈</a> <span class='muted'>Chosunbiz</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-B2">NEWS-B2</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMibEFVX3lxTE05T0RjZGVXOTNQbU9xbUJkTG53TVZrSElQLXFRTl9ZOVF5RTVWX3poLWVEbzdTVnZpRDdtVGpaY1Q4UlZVanUxNTA1SGlGOE55VnJNTEFMNlV6d0JhajVEOS10bGZBM05KSU51LQ?oc=5' target='_blank' rel='noopener'>[인사이드 스토리]이마트·신세계, &#x27;완전 독립&#x27; 시동…남은 숙제는</a> <span class='muted'>비즈워치</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-B3">NEWS-B3</button></td></tr><tr><td class='num'>2026-09-29</td><td><a href='https://news.google.com/rss/articles/CBMic0FVX3lxTE11M3ZyZ3BQRzJkMnc0TVJwZWNQMXJRb2FZbEl2dTFMZTFhV3hfX1hIQ3paNHAtTXMtdU5iYzk0S3o1dE5fRFFiVk9Xemt5WWUwQm1qbzd6dGwwSXhTdEZENU5UT2dVMHJOcjY0VEU4VjJGeUU?oc=5' target='_blank' rel='noopener'>이마트24 특화점 3곳에 &#x27;잘 팔릴 상품&#x27; 진열, 최진일 &#x27;확산 효과&#x27;로 가맹점 매출 견인한다</a> <span class='muted'>비즈니스포스트</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-B4">NEWS-B4</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMie0FVX3lxTE5idFBXbS1tX0hnSjNDSE4zZ2NWdlZLdVlIV1BOSTBXdXk4SXBrc0NSUUdtR2FnUkQ4aW5faVVPMjZxeFZVbGJ4end5dmN1UFpGZ3BISTdWbndfNHNRc1YxZkUyc0ZsNnpiQ0VNb3hJbWIwNTc0NFhaVTFFRQ?oc=5' target='_blank' rel='noopener'>폐플라스틱이 벤치로… 이마트, 쉼터 조성</a> <span class='muted'>서울신문</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-B5">NEWS-B5</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMiYEFVX3lxTE45VnNVVGFmY1k4VW83bkNkNEFlV21EZk56T2hvOW14dlFUdlFfTHRZaC13d3RFMXJndXNieWQ1R2NLR29DcXpDX2kzTHpKNUpQRmFjaUxiMmJvYUVKdUVua9IBeEFVX3lxTE1zYUc4T1RLUFZoY1NIT3FITHZTS1dpcW14NmJsQy1KbUtMQjE4OWlWZzUzQ2R2SjV3TF9MeVA2QkFVUXJ1TEZYNFc1WnBPemlQaHBaZVNCTkRJbEc4emMyRUFWNl91Q2VCbUJpRGt0cDg4RjBsVDRSWA?oc=5' target='_blank' rel='noopener'>“가을 장바구니 잡아라&quot; 이마트, 5일간 &#x27;고래잇 페스타&#x27;</a> <span class='muted'>뉴시스</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-B6">NEWS-B6</button></td></tr></tbody></table></div><h4 class='sub'>HDC현대산업개발</h4><div class='tbl-wrap'><table><tbody><tr><td class='num'>2026-09-29</td><td><a href='https://news.google.com/rss/articles/CBMicEFVX3lxTE5yZFFaSmZmMkRiYTl6TWsya3lCd1FzMmozQUdYZUVOOTloVEdEY09kbElURTJPX0tWZnVMUk9WUElxNENmNW9sZTBiTDFMckNtTko4cWFMOXNuVEdCVkt6SV8zU05UbzRGZW9FS2NGdWQ?oc=5' target='_blank' rel='noopener'>HDC현대산업개발, 교육·환경·주거 품은 가을맞이 사회공헌 지평 확대</a> <span class='muted'>위키리크스한국</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-C1">NEWS-C1</button></td></tr><tr><td class='num'>2026-09-29</td><td><a href='https://news.google.com/rss/articles/CBMic0FVX3lxTE01N2JxZWhVY0gtM1UwMXFuS0M5ejFiRWhHdGlhNGtFYU91TWIyMDYxM2VVUDFDSnB0S2FWQ2dRaHFiNG95d0JfVTR6UmtSaWVKdkhkenI5SzNRQzM4U19CNktLaktOMEh1Z1NtbFVFcTByalU?oc=5' target='_blank' rel='noopener'>IPARK현대산업개발 AI로 자체사업 고도화, &#x27;파크로쉬 서울원&#x27; HDC그룹 사업전환 중심에</a> <span class='muted'>비즈니스포스트</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-C2">NEWS-C2</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMibkFVX3lxTE9OOTN5RWFJMVBRcjNSa2JkUUU5OTVQY1RYSS1VbFVNUHBWVnBTY2VSVldQSmlweU80SWZwa3JxNkZNR3lZdU5aVExhNy01eDMtS0VJdTdJVWgyWXJ6dDlUeHV1RE1KLUpsUnotUlp3?oc=5' target='_blank' rel='noopener'>IPARK현대산업개발, 위례신도시 도시지원시설용지 1블록 공사 수주</a> <span class='muted'>아시아투데이</span></td><td><span class="pill l">긍정</span> <span class='muted'>수주</span></td><td><button class="cite" data-src="NEWS-C3">NEWS-C3</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMiY0FVX3lxTFB0eXpEdkF1OVluQnYzd05ObThUVkdld1JVenluNENPQWZDQ3JRelp2cFBfZDhBVFh4aXhCM3Zlal9fNkMxYS05VlN5LVpfa3dxdzRlYlhIdE8yb05FOF9zVjhqSQ?oc=5' target='_blank' rel='noopener'>IPARK현대산업개발, 수익성·재무건전성 개선…하반기 성장동력 확보</a> <span class='muted'>조세금융신문</span></td><td><span class="pill l">긍정</span> <span class='muted'>성장, 개선</span></td><td><button class="cite" data-src="NEWS-C4">NEWS-C4</button></td></tr><tr><td class='num'>2026-09-02</td><td><a href='https://news.google.com/rss/articles/CBMiaEFVX3lxTFB0QzRPWURQWmpnR0tLZ2kzekEtRnQwam9OelJCS3l5aGQ3OUhJeXhIc2ZfcVpHLWpvYnpOdWU0djNWbjFWT0tJSHUzWTI0S0d1WlA3d1Vka0x4VU1MTHVQa0FldWdPWExP?oc=5' target='_blank' rel='noopener'>HDC현대산업개발, 천안 부성6지구서 &#x27;사유지 무단 훼손&#x27; 고소·민원 잇따라</a> <span class='muted'>녹색경제신문</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-C5">NEWS-C5</button></td></tr><tr><td class='num'>2026-06-24</td><td><a href='https://news.google.com/rss/articles/CBMibkFVX3lxTE5pbWt4TWdBMy1VRzhOb2J4NVVoUjYxbWpEWVNtdFM2NDZ3OGxPSmtmR2daY2xRamFOZlJyVV9YVXpJQ08zZTFLcE1rcExnTElJbF9GQllPWW1McWhMcTltVlZIQUZZbkdBRUozaGJR?oc=5' target='_blank' rel='noopener'>[기업분석] &#x27;아이파크&#x27;의 부활…HDC현대산업개발, 영업정지 넘을까</a> <span class='muted'>이슈밸리</span></td><td><span class="pill h">부정</span> <span class='muted'>영업정지</span></td><td><button class="cite" data-src="NEWS-C6">NEWS-C6</button></td></tr></tbody></table></div>
+
+  <h3><span class="n">11</span>심사역 확인 (Human-in-the-loop)</h3>
+  <div class="hitl">
+    <p><b>Agent가 확정하지 않고 사람에게 넘긴 6개 항목입니다.</b> 모두 확인해야 상신할 수 있습니다.</p>
+    <label><input type="checkbox" class="hc" id="h0"> <span><b>감정평가서 서류 보완</b><br><span class="muted">필수 서류가 업로드되지 않았습니다</span></span></label><label><input type="checkbox" class="hc" id="h1"> <span><b>재무제표를 DART 공시와 대사</b><br><span class="muted">DART에 연결하지 못해 차주가 제출한 수치로 분석했습니다 (여신업무규정 제12조②)</span></span></label><label><input type="checkbox" class="hc" id="h2"> <span><b>REG-02-11 확인필요: 준공 후 LTV 70% 이하</b><br><span class="muted">감정평가서 징구 필요</span></span></label><label><input type="checkbox" class="hc" id="h3"> <span><b>REG-02-11 부적합: 준공 전 토지가치 미달 시 책임준공 등 신용보강</b><br><span class="muted">책임준공확약서 미제출</span></span></label><label><input type="checkbox" class="hc" id="h4"> <span><b>REG-01-31 확인필요: A- 표준 가산금리 1.70%p ±0.20</b><br><span class="muted">조정 범위 밖</span></span></label><label><input type="checkbox" class="hc" id="h5"> <span><b>여신위원회 부의 안건 등록</b><br><span class="muted">신청 550억, 전결 한도 300억 초과 <button class="cite" data-src="REG-01-40">REG-01-40</button></span></span></label>
+    <textarea id="opinion" placeholder="심사역 의견 (AI 초안 수정 사항, 추가 조건 등)"></textarea>
+    <div class="decide">
+      <button class="btn primary" id="d-ok" disabled>조건부 승인으로 상신</button>
+      <button class="btn" id="d-mod">재작성 요청</button>
+      <button class="btn" id="d-no">반려</button>
+      <span class="muted" id="d-hint"></span>
+    </div>
+  </div>
+
+  <h3><span class="n">12</span>출처</h3>
+  <ul class="src"><li id='s-ECOS-CD91'><code>ECOS-CD91</code><span><span class="pill k-real">실제</span> CD(91일) (20260929)<br><span class='muted'>한국은행 ECOS 817Y002 · 2026-09-29 17:27:17</span></span></li><li id='s-ECOS-BASERATE'><code>ECOS-BASERATE</code><span><span class="pill k-real">실제</span> 한국은행 기준금리 (202608)<br><span class='muted'>한국은행 ECOS 722Y001 · 2026-09-29 17:27:17</span></span></li><li id='s-ECOS-KTB3Y'><code>ECOS-KTB3Y</code><span><span class="pill k-real">실제</span> 국고채(3년) (20260929)<br><span class='muted'>한국은행 ECOS 817Y002 · 2026-09-29 17:27:17</span></span></li><li id='s-ECOS-CORPLOANLARGE'><code>ECOS-CORPLOANLARGE</code><span><span class="pill k-real">실제</span> 예금은행 대기업대출 금리(신규) (202607)<br><span class='muted'>한국은행 ECOS 121Y006 · 2026-09-29 17:27:17</span></span></li><li id='s-NEWS-B1'><code>NEWS-B1</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiaEFVX3lxTE1KNkF4MlRFaXZoSnJHSEJyV3lEdFBOengwUHJHRUpYdGFyR043S1lFWlRWVThoTUlPNjNVR3VINVNiLWxPTFRNQ1BrWmVpU0hUUDhGLVV4eUp0aDQ2Q0Iya3F5Q3ZMa2p1?oc=5' target='_blank' rel='noopener'>이마트, 10월1∼5일 &#x27;고래잇페스타&#x27;…햇고구마부터 주류할인까지 (문화투데이, 2026-09-29)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:18</span></span></li><li id='s-NEWS-B2'><code>NEWS-B2</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiigFBVV95cUxQZmRNSE4xNGVqQ19VYk5acDFGOFFhM2dHdkVaMUlLY2Z1bGsxa0QyVFpuQktzMDVodmhoMkRpUldwbHd4UlNKN05hd2N1SXRWN2U4aFJMcGQzQ196R3A5Y2RWZ1RRdVF1d1Zkd29UVVRpWTV3Wk9ITXV3NDJXdHRTRkhVQ3llZk9UQkHSAZ4BQVVfeXFMUERlYXBfVUlOdE9uVFhXT1JjcWJSam9wS2pMY3N2Y2tJYnpNOXBXLVdzQXU5UHBSbEs0eGdaalRnRFc3TklPQkctM3BtQzNIWHZkUVdRd01xRjVUWTJqb19TaV83N0xUS3dFQ3RKQy1tUElIZEVlcHpaUS05a1B6OUE0clVJSndCSjZic1BtYm1zZU1QR09UXy1FRjF1Umc?oc=5' target='_blank' rel='noopener'>홈플러스 힘 못 쓴 추석 대목, 이마트 웃었다 - 조선비즈 (Chosunbiz, 2026-09-29)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:18</span></span></li><li id='s-NEWS-B3'><code>NEWS-B3</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMibEFVX3lxTE05T0RjZGVXOTNQbU9xbUJkTG53TVZrSElQLXFRTl9ZOVF5RTVWX3poLWVEbzdTVnZpRDdtVGpaY1Q4UlZVanUxNTA1SGlGOE55VnJNTEFMNlV6d0JhajVEOS10bGZBM05KSU51LQ?oc=5' target='_blank' rel='noopener'>[인사이드 스토리]이마트·신세계, &#x27;완전 독립&#x27; 시동…남은 숙제는 (비즈워치, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:18</span></span></li><li id='s-NEWS-B4'><code>NEWS-B4</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMic0FVX3lxTE11M3ZyZ3BQRzJkMnc0TVJwZWNQMXJRb2FZbEl2dTFMZTFhV3hfX1hIQ3paNHAtTXMtdU5iYzk0S3o1dE5fRFFiVk9Xemt5WWUwQm1qbzd6dGwwSXhTdEZENU5UT2dVMHJOcjY0VEU4VjJGeUU?oc=5' target='_blank' rel='noopener'>이마트24 특화점 3곳에 &#x27;잘 팔릴 상품&#x27; 진열, 최진일 &#x27;확산 효과&#x27;로 가맹점 매출 견인한다 (비즈니스포스트, 2026-09-29)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:18</span></span></li><li id='s-NEWS-B5'><code>NEWS-B5</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMie0FVX3lxTE5idFBXbS1tX0hnSjNDSE4zZ2NWdlZLdVlIV1BOSTBXdXk4SXBrc0NSUUdtR2FnUkQ4aW5faVVPMjZxeFZVbGJ4end5dmN1UFpGZ3BISTdWbndfNHNRc1YxZkUyc0ZsNnpiQ0VNb3hJbWIwNTc0NFhaVTFFRQ?oc=5' target='_blank' rel='noopener'>폐플라스틱이 벤치로… 이마트, 쉼터 조성 (서울신문, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:18</span></span></li><li id='s-NEWS-B6'><code>NEWS-B6</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiYEFVX3lxTE45VnNVVGFmY1k4VW83bkNkNEFlV21EZk56T2hvOW14dlFUdlFfTHRZaC13d3RFMXJndXNieWQ1R2NLR29DcXpDX2kzTHpKNUpQRmFjaUxiMmJvYUVKdUVua9IBeEFVX3lxTE1zYUc4T1RLUFZoY1NIT3FITHZTS1dpcW14NmJsQy1KbUtMQjE4OWlWZzUzQ2R2SjV3TF9MeVA2QkFVUXJ1TEZYNFc1WnBPemlQaHBaZVNCTkRJbEc4emMyRUFWNl91Q2VCbUJpRGt0cDg4RjBsVDRSWA?oc=5' target='_blank' rel='noopener'>“가을 장바구니 잡아라&quot; 이마트, 5일간 &#x27;고래잇 페스타&#x27; (뉴시스, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:18</span></span></li><li id='s-NEWS-C1'><code>NEWS-C1</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMicEFVX3lxTE5yZFFaSmZmMkRiYTl6TWsya3lCd1FzMmozQUdYZUVOOTloVEdEY09kbElURTJPX0tWZnVMUk9WUElxNENmNW9sZTBiTDFMckNtTko4cWFMOXNuVEdCVkt6SV8zU05UbzRGZW9FS2NGdWQ?oc=5' target='_blank' rel='noopener'>HDC현대산업개발, 교육·환경·주거 품은 가을맞이 사회공헌 지평 확대 (위키리크스한국, 2026-09-29)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:19</span></span></li><li id='s-NEWS-C2'><code>NEWS-C2</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMic0FVX3lxTE01N2JxZWhVY0gtM1UwMXFuS0M5ejFiRWhHdGlhNGtFYU91TWIyMDYxM2VVUDFDSnB0S2FWQ2dRaHFiNG95d0JfVTR6UmtSaWVKdkhkenI5SzNRQzM4U19CNktLaktOMEh1Z1NtbFVFcTByalU?oc=5' target='_blank' rel='noopener'>IPARK현대산업개발 AI로 자체사업 고도화, &#x27;파크로쉬 서울원&#x27; HDC그룹 사업전환 중심에 (비즈니스포스트, 2026-09-29)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:19</span></span></li><li id='s-NEWS-C3'><code>NEWS-C3</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMibkFVX3lxTE9OOTN5RWFJMVBRcjNSa2JkUUU5OTVQY1RYSS1VbFVNUHBWVnBTY2VSVldQSmlweU80SWZwa3JxNkZNR3lZdU5aVExhNy01eDMtS0VJdTdJVWgyWXJ6dDlUeHV1RE1KLUpsUnotUlp3?oc=5' target='_blank' rel='noopener'>IPARK현대산업개발, 위례신도시 도시지원시설용지 1블록 공사 수주 (아시아투데이, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:19</span></span></li><li id='s-NEWS-C4'><code>NEWS-C4</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiY0FVX3lxTFB0eXpEdkF1OVluQnYzd05ObThUVkdld1JVenluNENPQWZDQ3JRelp2cFBfZDhBVFh4aXhCM3Zlal9fNkMxYS05VlN5LVpfa3dxdzRlYlhIdE8yb05FOF9zVjhqSQ?oc=5' target='_blank' rel='noopener'>IPARK현대산업개발, 수익성·재무건전성 개선…하반기 성장동력 확보 (조세금융신문, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:19</span></span></li><li id='s-NEWS-C5'><code>NEWS-C5</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiaEFVX3lxTFB0QzRPWURQWmpnR0tLZ2kzekEtRnQwam9OelJCS3l5aGQ3OUhJeXhIc2ZfcVpHLWpvYnpOdWU0djNWbjFWT0tJSHUzWTI0S0d1WlA3d1Vka0x4VU1MTHVQa0FldWdPWExP?oc=5' target='_blank' rel='noopener'>HDC현대산업개발, 천안 부성6지구서 &#x27;사유지 무단 훼손&#x27; 고소·민원 잇따라 (녹색경제신문, 2026-09-02)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:19</span></span></li><li id='s-NEWS-C6'><code>NEWS-C6</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMibkFVX3lxTE5pbWt4TWdBMy1VRzhOb2J4NVVoUjYxbWpEWVNtdFM2NDZ3OGxPSmtmR2daY2xRamFOZlJyVV9YVXpJQ08zZTFLcE1rcExnTElJbF9GQllPWW1McWhMcTltVlZIQUZZbkdBRUozaGJR?oc=5' target='_blank' rel='noopener'>[기업분석] &#x27;아이파크&#x27;의 부활…HDC현대산업개발, 영업정지 넘을까 (이슈밸리, 2026-06-24)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:19</span></span></li><li id='s-INPUT-1'><code>INPUT-1</code><span><span class="pill k-syn">제출·가상</span> 업로드 화면 입력 기업정보<br><span class='muted'>심사 요청자 입력 · 2026-09-29 17:27:17</span></span></li><li id='s-SUB-01'><code>SUB-01</code><span><span class="pill k-syn">제출·가상</span> 여신거래신청서<br><span class='muted'>차주 제출서류 (가상) · 2026-09-29 17:27:17</span></span></li><li id='s-SUB-02'><code>SUB-02</code><span><span class="pill k-syn">제출·가상</span> 사업계획서<br><span class='muted'>차주 제출서류 (가상) · 2026-09-29 17:27:17</span></span></li><li id='s-SUB-03'><code>SUB-03</code><span><span class="pill k-syn">제출·가상</span> 공사도급계약서(책임준공 포함)<br><span class='muted'>차주 제출서류 (가상) · 2026-09-29 17:27:17</span></span></li><li id='s-SUB-05'><code>SUB-05</code><span><span class="pill k-syn">제출·가상</span> 재무제표 (차주 제출)<br><span class='muted'>차주 제출서류 (가상) · 2026-09-29 17:27:17</span></span></li><li id='s-INT-01'><code>INT-01</code><span><span class="pill k-syn">내부·가상</span> 차주 거래현황<br><span class='muted'>여신원장 (가상) · 2026-09-29 17:27:17</span></span></li><li id='s-INT-02'><code>INT-02</code><span><span class="pill k-syn">내부·가상</span> 내부신용등급(CSS)<br><span class='muted'>기업신용평가시스템 (가상) · 2026-09-29 17:27:17</span></span></li><li id='s-INT-03'><code>INT-03</code><span><span class="pill k-syn">내부·가상</span> 시공사 책임준공 약정 관리현황<br><span class='muted'>리스크관리 DB (가상) · 2026-09-29 17:27:17</span></span></li><li id='s-REG-01-24'><code>REG-01-24</code><span><span class="pill k-reg">규정·가상</span> 여신업무규정 제24조 (재무기준)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li><li id='s-REG-02-8'><code>REG-02-8</code><span><span class="pill k-reg">규정·가상</span> 시설자금대출 취급세칙 제8조 (상환능력)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li><li id='s-REG-01-12'><code>REG-01-12</code><span><span class="pill k-reg">규정·가상</span> 여신업무규정 제12조 (여신심사의 원칙)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li><li id='s-REG-02-10'><code>REG-02-10</code><span><span class="pill k-reg">규정·가상</span> 시설자금대출 취급세칙 제10조 (자기자금)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li><li id='s-REG-02-11'><code>REG-02-11</code><span><span class="pill k-reg">규정·가상</span> 시설자금대출 취급세칙 제11조 (담보)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li><li id='s-REG-03-5'><code>REG-03-5</code><span><span class="pill k-reg">규정·가상</span> 건설 관련 여신 심사가이드 제5조 (시공사 평가)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li><li id='s-REG-03-7'><code>REG-03-7</code><span><span class="pill k-reg">규정·가상</span> 건설 관련 여신 심사가이드 제7조 (설계변경 리스크)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li><li id='s-REG-01-40'><code>REG-01-40</code><span><span class="pill k-reg">규정·가상</span> 여신업무규정 제40조 (전결권)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li><li id='s-REG-01-31'><code>REG-01-31</code><span><span class="pill k-reg">규정·가상</span> 여신업무규정 제31조 (금리 결정)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li><li id='s-REG-03-9'><code>REG-03-9</code><span><span class="pill k-reg">규정·가상</span> 건설 관련 여신 심사가이드 제9조 (서류 확인)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li><li id='s-REG-02-14'><code>REG-02-14</code><span><span class="pill k-reg">규정·가상</span> 시설자금대출 취급세칙 제14조 (분할인출)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:19</span></span></li></ul>
+
+  <h3><span class="n">13</span>감사로그</h3>
+  <pre class="audit" id="audit">[17:27:17] START     심사 요청 C6 접수 (역할: 심사역, 모드: offline)
+[17:27:17] TOOL      list_documents({})
+[17:27:17] TOOL      read_document({&quot;doc_id&quot;: &quot;SUB-01&quot;})
+[17:27:17] READ      SUB-01 여신거래신청서
+[17:27:17] TOOL      read_document({&quot;doc_id&quot;: &quot;SUB-02&quot;})
+[17:27:17] READ      SUB-02 사업계획서
+[17:27:17] TOOL      read_document({&quot;doc_id&quot;: &quot;SUB-03&quot;})
+[17:27:17] READ      SUB-03 공사도급계약서(책임준공 포함)
+[17:27:17] TOOL      read_document({&quot;doc_id&quot;: &quot;SUB-04&quot;})
+[17:27:17] MISSING   SUB-04 감정평가서 미제출
+[17:27:17] TOOL      get_internal_record({&quot;record_id&quot;: &quot;INT-01&quot;})
+[17:27:17] READ      INT-01 차주 거래현황 (민감도 internal)
+[17:27:17] TOOL      get_internal_record({&quot;record_id&quot;: &quot;INT-02&quot;})
+[17:27:17] READ      INT-02 내부신용등급(CSS) (민감도 restricted)
+[17:27:17] TOOL      get_internal_record({&quot;record_id&quot;: &quot;INT-03&quot;})
+[17:27:17] READ      INT-03 시공사 책임준공 약정 관리현황 (민감도 internal)
+[17:27:17] TOOL      get_financials({})
+[17:27:17] FALLBACK  dart_fin_139480 실시간 조회 실패: DART 012: 접근할 수 없는 IP입니다.(121.134.129.225)
+[17:27:17] FALLBACK  DART 미연결 → 차주 제출 재무제표(SUB-05)로 대체
+[17:27:17] TOOL      get_market_rates({})
+[17:27:17] LIVE      ecos_cd91 조회 성공 (0.1s)
+[17:27:17] LIVE      ecos_base_rate 조회 성공 (0.1s)
+[17:27:17] LIVE      ecos_ktb3y 조회 성공 (0.1s)
+[17:27:17] LIVE      ecos_corp_loan_large 조회 성공 (0.1s)
+[17:27:17] TOOL      search_news({&quot;company&quot;: &quot;이마트&quot;})
+[17:27:18] LIVE      news_이마트 조회 성공 (1.0s)
+[17:27:18] TOOL      search_news({&quot;company&quot;: &quot;HDC현대산업개발&quot;})
+[17:27:19] LIVE      news_HDC현대산업개발 조회 성공 (0.7s)
+[17:27:19] TOOL      run_checks({})
+[17:27:19] MISSING   SUB-04 감정평가서 미제출
+[17:27:19] RAG       &#x27;부채비율 재무기준&#x27; → REG-01-24(1.0)
+[17:27:19] RAG       &#x27;DSCR 상환능력&#x27; → REG-02-8(1.0), REG-01-12(0.34)
+[17:27:19] RAG       &#x27;자기자금 비율&#x27; → REG-02-10(1.0), REG-02-11(0.37)
+[17:27:19] RAG       &#x27;LTV 담보&#x27; → REG-02-11(1.0)
+[17:27:19] RAG       &#x27;시공사 행정처분&#x27; → REG-03-5(1.0)
+[17:27:19] RAG       &#x27;설계변경 공사비 조정&#x27; → REG-03-7(1.0)
+[17:27:19] RAG       &#x27;전결권 여신위원회&#x27; → REG-01-40(1.0), REG-01-24(0.48)
+[17:27:19] RAG       &#x27;가산금리&#x27; → REG-01-31(1.0)
+[17:27:19] RAG       &#x27;책임준공확약서 원본 인감증명서&#x27; → REG-03-9(1.0), REG-02-11(0.33)
+[17:27:19] RAG       &#x27;분할인출 공정률&#x27; → REG-02-14(1.0), REG-03-5(0.59)
+[17:27:19] CHECK     규정 11건 판정, 대사 5건, 사람 확인 6건, 규칙상 권고 보류
+[17:27:19] TOOL      submit_report({&quot;recommendation&quot;: &quot;보류&quot;, &quot;opinion&quot;: &quot;차주의 매출은 2023년 290,000억원에서 2025년 298,000억원으로)
+[17:27:19] DRAFT     보고서 초안 제출 (권고: 보류)
+[17:27:19] HITL      심사역 확인 대기 6건. 사람 결재 전까지 보고서는 초안 상태</pre>
+
+  <p class="foot">모든 판단 문장에는 출처가 연결되어 있고, 출처 없는 문장이 있으면 보고서 제출 단계에서 반려됩니다. 숫자는 코드가 계산하고 AI는 서술만 작성합니다. 최종 여신 결정은 심사역과 여신위원회가 합니다.</p>
+</main></div></div>
+<script>
+(function(){
+  var canApprove=true,decided=false;
+  var checks=[].slice.call(document.querySelectorAll('.hc')),ok=document.getElementById('d-ok'),
+      mod=document.getElementById('d-mod'),no=document.getElementById('d-no'),hint=document.getElementById('d-hint'),audit=document.getElementById('audit');
+  function t(){return new Date().toTimeString().slice(0,8);}
+  function log(m){audit.textContent+='\n['+t()+'] REVIEW    '+m;audit.scrollTop=audit.scrollHeight;}
+  function upd(){
+    var n=checks.filter(function(c){return c.checked;}).length;
+    checks.forEach(function(c){c.disabled=!canApprove||decided;});
+    ok.disabled=!(canApprove&&!decided&&n===checks.length);mod.disabled=no.disabled=!canApprove||decided;
+    hint.textContent=decided?'결재 완료':(!canApprove?'이 역할은 열람만 가능합니다':'확인 '+n+' / '+checks.length);
+  }
+  checks.forEach(function(c){c.addEventListener('change',function(){log((c.checked?'확인 ':'해제 ')+c.nextElementSibling.querySelector('b').textContent);upd();});});
+  function decide(label){
+    decided=true;var s=document.getElementById('stamp');s.textContent='심사역 결재 · '+label;s.classList.add('done');
+    document.getElementById('reviewer').textContent=label;var op=document.getElementById('opinion').value.trim();
+    log('결정: '+label+(op?' / 의견: '+op:''));upd();
+  }
+  ok.onclick=function(){decide('조건부 승인 상신');};mod.onclick=function(){decide('재작성 요청');};no.onclick=function(){decide('반려');};
+  document.getElementById('report').addEventListener('click',function(e){
+    var b=e.target.closest('.cite');if(!b)return;var li=document.getElementById('s-'+b.dataset.src);if(!li)return;
+    li.scrollIntoView({behavior:'smooth',block:'center'});li.classList.add('flash');setTimeout(function(){li.classList.remove('flash');},1400);
+  });
+  upd();
+})();
+</script>

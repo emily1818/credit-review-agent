@@ -1,0 +1,53 @@
+{
+ "_meta": {
+  "title": "재무제표 요약(연결) 2023~2025",
+  "company": "㈜카카오",
+  "unit": "억원",
+  "synthetic": true,
+  "note": "PoC 시연용 가상 수치. DART 연결 시 공시 수치로 대체·대사됨"
+ },
+ "years": {
+  "2023": {
+   "revenue": 75000,
+   "operating_income": 4600,
+   "net_income": 1500,
+   "total_assets": 250000,
+   "total_liabilities": 105000,
+   "total_equity": 145000,
+   "borrowings": 40000,
+   "interest_expense": 1500,
+   "depreciation": 9000,
+   "operating_cf": 14000,
+   "cash": 50000,
+   "annual_debt_service": 11000
+  },
+  "2024": {
+   "revenue": 78000,
+   "operating_income": 4900,
+   "net_income": 1800,
+   "total_assets": 255000,
+   "total_liabilities": 104000,
+   "total_equity": 151000,
+   "borrowings": 39000,
+   "interest_expense": 1450,
+   "depreciation": 9300,
+   "operating_cf": 14500,
+   "cash": 52000,
+   "annual_debt_service": 11000
+  },
+  "2025": {
+   "revenue": 80000,
+   "operating_income": 5200,
+   "net_income": 2300,
+   "total_assets": 258000,
+   "total_liabilities": 103000,
+   "total_equity": 155000,
+   "borrowings": 38000,
+   "interest_expense": 1400,
+   "depreciation": 9500,
+   "operating_cf": 15000,
+   "cash": 53000,
+   "annual_debt_service": 11000
+  }
+ }
+}

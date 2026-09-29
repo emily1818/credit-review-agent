@@ -1,0 +1,17 @@
+{
+ "case_id": "C5",
+ "project": "카카오 안산 데이터센터 2단계 신축",
+ "loan": 850,
+ "borrower": {
+  "name": "카카오",
+  "stock_code": "035720",
+  "industry": "인터넷 플랫폼"
+ },
+ "contractor": {
+  "name": "현대건설",
+  "stock_code": "000720"
+ },
+ "architect": {
+  "name": "☆☆건축사사무소"
+ }
+}

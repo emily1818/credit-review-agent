@@ -1,0 +1,17 @@
+{
+ "case_id": "C1",
+ "project": "HDC랩스 스마트빌딩 R&D센터 신축",
+ "loan": 480,
+ "borrower": {
+  "name": "HDC랩스",
+  "stock_code": "039570",
+  "industry": "부동산 관리·스마트홈 솔루션"
+ },
+ "contractor": {
+  "name": "GS건설",
+  "stock_code": "006360"
+ },
+ "architect": {
+  "name": "○○종합건축사사무소"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "case_id": "C4",
+ "project": "오리온 진천 제2생산공장 신축",
+ "loan": 700,
+ "borrower": {
+  "name": "오리온",
+  "stock_code": "271560",
+  "industry": "식품 제조"
+ },
+ "contractor": {
+  "name": "대우건설",
+  "stock_code": "047040"
+ },
+ "architect": {
+  "name": "◇◇건축사사무소"
+ }
+}

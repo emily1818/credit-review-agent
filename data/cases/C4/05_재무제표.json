@@ -1,0 +1,53 @@
+{
+ "_meta": {
+  "title": "재무제표 요약(연결) 2023~2025",
+  "company": "㈜오리온",
+  "unit": "억원",
+  "synthetic": true,
+  "note": "PoC 시연용 가상 수치. DART 연결 시 공시 수치로 대체·대사됨"
+ },
+ "years": {
+  "2023": {
+   "revenue": 29000,
+   "operating_income": 4900,
+   "net_income": 3500,
+   "total_assets": 38000,
+   "total_liabilities": 8000,
+   "total_equity": 30000,
+   "borrowings": 2500,
+   "interest_expense": 90,
+   "depreciation": 1500,
+   "operating_cf": 6000,
+   "cash": 9000,
+   "annual_debt_service": 500
+  },
+  "2024": {
+   "revenue": 30500,
+   "operating_income": 5300,
+   "net_income": 3900,
+   "total_assets": 41000,
+   "total_liabilities": 8200,
+   "total_equity": 32800,
+   "borrowings": 2400,
+   "interest_expense": 85,
+   "depreciation": 1550,
+   "operating_cf": 6300,
+   "cash": 9800,
+   "annual_debt_service": 500
+  },
+  "2025": {
+   "revenue": 31500,
+   "operating_income": 5500,
+   "net_income": 4100,
+   "total_assets": 44000,
+   "total_liabilities": 8300,
+   "total_equity": 35700,
+   "borrowings": 2300,
+   "interest_expense": 80,
+   "depreciation": 1600,
+   "operating_cf": 6500,
+   "cash": 10500,
+   "annual_debt_service": 500
+  }
+ }
+}

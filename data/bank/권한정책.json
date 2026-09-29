@@ -1,0 +1,9 @@
+{
+  "_meta": {"doc_id": "POL-01", "title": "Agent 데이터 접근 권한정책 (가상)"},
+  "roles": {
+    "reviewer":   {"label": "심사역",     "sensitivity": ["public", "internal", "restricted"], "can_approve": true},
+    "rm":         {"label": "영업점 RM",  "sensitivity": ["public", "internal"],               "can_approve": false},
+    "compliance": {"label": "준법감시",   "sensitivity": ["public", "internal", "restricted"], "can_approve": false}
+  },
+  "rules": ["restricted 등급 데이터는 권한이 없으면 값 대신 '권한 없음'으로 마스킹", "Agent는 권한 밖 데이터를 도구로 요청할 수 없으며 요청 시도는 감사로그에 기록"]
+}

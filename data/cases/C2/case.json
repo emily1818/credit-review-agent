@@ -1,0 +1,17 @@
+{
+ "case_id": "C2",
+ "project": "CJ대한통운 이천 스마트 물류센터 신축",
+ "loan": 280,
+ "borrower": {
+  "name": "CJ대한통운",
+  "stock_code": "000120",
+  "industry": "종합물류"
+ },
+ "contractor": {
+  "name": "DL이앤씨",
+  "stock_code": "375500"
+ },
+ "architect": {
+  "name": "△△건축사사무소"
+ }
+}

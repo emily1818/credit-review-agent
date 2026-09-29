@@ -1,0 +1,17 @@
+{
+ "case_id": "C3",
+ "project": "호텔신라 제주 별관 증축",
+ "loan": 420,
+ "borrower": {
+  "name": "호텔신라",
+  "stock_code": "008770",
+  "industry": "호텔·면세"
+ },
+ "contractor": {
+  "name": "삼성물산",
+  "stock_code": "028260"
+ },
+ "architect": {
+  "name": "□□건축사사무소"
+ }
+}

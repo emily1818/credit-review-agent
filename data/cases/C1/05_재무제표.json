@@ -1,0 +1,53 @@
+{
+ "_meta": {
+  "title": "재무제표 요약(연결) 2023~2025",
+  "company": "㈜HDC랩스",
+  "unit": "억원",
+  "synthetic": true,
+  "note": "PoC 시연용 가상 수치. DART 연결 시 공시 수치로 대체·대사됨"
+ },
+ "years": {
+  "2023": {
+   "revenue": 6850,
+   "operating_income": 210,
+   "net_income": 148,
+   "total_assets": 5420,
+   "total_liabilities": 3190,
+   "total_equity": 2230,
+   "borrowings": 890,
+   "interest_expense": 46,
+   "depreciation": 70,
+   "operating_cf": 295,
+   "cash": 820,
+   "annual_debt_service": 88
+  },
+  "2024": {
+   "revenue": 7120,
+   "operating_income": 245,
+   "net_income": 171,
+   "total_assets": 5610,
+   "total_liabilities": 3180,
+   "total_equity": 2430,
+   "borrowings": 960,
+   "interest_expense": 57,
+   "depreciation": 72,
+   "operating_cf": 318,
+   "cash": 760,
+   "annual_debt_service": 92
+  },
+  "2025": {
+   "revenue": 7410,
+   "operating_income": 268,
+   "net_income": 190,
+   "total_assets": 5850,
+   "total_liabilities": 3240,
+   "total_equity": 2610,
+   "borrowings": 1050,
+   "interest_expense": 65,
+   "depreciation": 74,
+   "operating_cf": 341,
+   "cash": 710,
+   "annual_debt_service": 95
+  }
+ }
+}

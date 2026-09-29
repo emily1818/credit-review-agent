@@ -1,0 +1,224 @@
+<title>호텔신라 여신심사 보고서</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 좌측 Agent 실행 요약(sticky) + 우측 심사보고서 본문 */
+:root{--bg:#f3f4f2;--paper:#fff;--ink:#15212b;--muted:#5d6a73;--line:#d9dedd;--accent:#1f5f6b;--accent-soft:#e2eeef;
+--ok:#2d7a4b;--ok-soft:#e3f1e8;--warn:#a86a10;--warn-soft:#faf0dc;--bad:#b0392f;--bad-soft:#f8e4e1;--mask:#e8ebea;--real:#2b5aa8;--real-soft:#e3ebf8;
+--f-display:"Noto Serif KR","Apple SD Gothic Neo",serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1519;--paper:#161e23;--ink:#e3e8ea;--muted:#95a3ab;--line:#2a353c;--accent:#6fb3bf;--accent-soft:#1c3237;--ok:#6cc08c;--ok-soft:#1a2f23;--warn:#e0a54a;--warn-soft:#33281a;--bad:#e57c72;--bad-soft:#3a201e;--mask:#232d33;--real:#86a9e8;--real-soft:#1d2940;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1519;--paper:#161e23;--ink:#e3e8ea;--muted:#95a3ab;--line:#2a353c;--accent:#6fb3bf;--accent-soft:#1c3237;--ok:#6cc08c;--ok-soft:#1a2f23;--warn:#e0a54a;--warn-soft:#33281a;--bad:#e57c72;--bad-soft:#3a201e;--mask:#232d33;--real:#86a9e8;--real-soft:#1d2940;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.65}
+a{color:var(--accent)}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:16px;padding-block:20px 60px}
+.note{font-size:12px;color:var(--warn);background:var(--warn-soft);border-radius:6px;padding:8px 12px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px;font-size:12.5px}
+@media (max-width:900px){aside{position:static}}
+aside h2{font-size:12px;letter-spacing:.06em;margin:0 0 10px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.stats div{background:var(--bg);border-radius:6px;padding:8px}.stats small{display:block;font-size:10.5px;color:var(--muted)}
+.stats b{font-family:var(--f-mono);font-size:16px;font-weight:500}
+aside ul{margin:4px 0 12px;padding-left:16px}
+.legend{display:flex;flex-wrap:wrap;gap:6px}
+main{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:clamp(18px,4vw,44px);min-width:0}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:22px}
+.head h1{font-family:var(--f-display);font-size:clamp(22px,3vw,28px);margin:0;line-height:1.3;text-wrap:balance}
+.head .meta{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);text-align:right}
+@media (max-width:600px){.head .meta{text-align:left}}
+.stamp{display:inline-block;border:1.5px solid var(--bad);color:var(--bad);font-size:11px;font-weight:600;padding:1px 8px;border-radius:3px;letter-spacing:.06em;margin-bottom:6px}
+.stamp.done{border-color:var(--ok);color:var(--ok)}
+h3{font-family:var(--f-display);font-size:17px;margin:36px 0 10px;display:flex;gap:10px;align-items:baseline}
+h3 .n{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-weight:500}
+h4.sub{font-size:13px;margin:14px 0 4px}
+p{margin:0 0 10px;max-width:74ch}.muted{color:var(--muted);font-size:12px}
+.tbl-wrap{overflow-x:auto;margin:6px 0 8px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:12px;background:var(--bg);white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono);white-space:nowrap}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));column-gap:24px;border-top:1px solid var(--line);margin:0}
+.kv div{display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.kv dt{color:var(--muted);font-size:12px}.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.verdict{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;background:var(--accent-soft);border-radius:8px;padding:18px}
+@media (max-width:600px){.verdict{grid-template-columns:1fr}}
+.grade{min-width:120px}.grade small{display:block;font-size:11px;color:var(--muted)}
+.grade b{font-family:var(--f-display);font-size:22px;color:var(--accent);display:block;line-height:1.3}
+.verdict ol{margin:8px 0 0;padding-left:20px;font-size:13px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.metric{border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.metric small{display:block;font-size:11.5px;color:var(--muted)}.metric b{font-family:var(--f-mono);font-size:18px;font-weight:500;margin-right:4px}
+.pill{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 8px;border-radius:999px;white-space:nowrap}
+.pill.h{background:var(--bad-soft);color:var(--bad)}.pill.m{background:var(--warn-soft);color:var(--warn)}
+.pill.l{background:var(--ok-soft);color:var(--ok)}.pill.q{background:var(--mask);color:var(--muted)}
+.pill.k-real{background:var(--real-soft);color:var(--real)}.pill.k-syn{background:var(--mask);color:var(--muted)}.pill.k-reg{background:var(--accent-soft);color:var(--accent)}
+.cite{font-family:var(--f-mono);font-size:10.5px;color:var(--accent);background:var(--accent-soft);border:0;border-radius:3px;padding:0 4px;margin-left:2px;cursor:pointer;vertical-align:1px}
+.cite:hover{text-decoration:underline}
+.masked{background:var(--mask);color:var(--muted);border-radius:3px;padding:0 6px;font-size:12px;white-space:nowrap}
+.party{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.party article{border:1px solid var(--line);border-radius:8px;padding:14px;min-width:0}
+.party h4{margin:0;font-size:14px}.party .role{font-size:11px;color:var(--muted);letter-spacing:.04em}
+.party ul{margin:8px 0 0;padding-left:18px;font-size:12.5px}
+.hitl{border:1.5px solid var(--bad);border-radius:8px;padding:18px;background:var(--bad-soft)}
+.hitl label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:13px;cursor:pointer;border-bottom:1px dashed var(--line)}
+.hitl input{margin-top:4px;accent-color:var(--accent)}
+.hitl textarea{width:100%;min-height:64px;margin-top:10px;border:1px solid var(--line);border-radius:6px;padding:8px;font:inherit;font-size:13px;background:var(--paper);color:var(--ink)}
+.decide{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:6px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}.btn:disabled{opacity:.45;cursor:not-allowed}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.src{list-style:none;padding:0;margin:0;font-size:12.5px}
+.src li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px;padding:6px 8px;border-bottom:1px solid var(--line);border-radius:4px;transition:background .3s}
+.src li.flash{background:var(--accent-soft)}.src code{font-family:var(--f-mono);color:var(--accent);font-size:11.5px}
+.audit{font-family:var(--f-mono);font-size:11.5px;background:var(--bg);border-radius:6px;padding:10px 12px;max-height:300px;overflow:auto;white-space:pre-wrap;word-break:break-all;margin:0}
+.foot{font-size:11.5px;color:var(--muted);margin-top:28px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+<div class="wrap">
+<div class="note">PoC 결과물입니다. <b>실제</b> 표시 출처(한국은행 ECOS 금리, Google 뉴스, OpenDART)는 실행 시점에 조회한 실데이터이고, <b>가상</b> 표시 출처(차주 제출서류, 은행 내부자료, 사내 규정)는 시연용으로 만든 자료입니다. 가상 재무수치는 실제 공시와 다릅니다.</div>
+<div class="grid">
+<aside aria-label="Agent 실행 요약">
+  <h2>AGENT 실행 요약</h2>
+  <div class="stats">
+    <div><small>도구 호출</small><b>14</b></div><div><small>등록 출처</small><b>36</b></div>
+    <div><small>실데이터</small><b>16</b></div><div><small>가상자료</small><b>9</b></div>
+    <div><small>규정 조문</small><b>11</b></div><div><small>권한 거부</small><b>0</b></div>
+    <div><small>Fallback</small><b>1</b></div><div><small>사람 확인</small><b>5</b></div>
+  </div>
+  <h2>FALLBACK 내역</h2><ul><li>재무제표 → 차주 제출본 대체</li></ul>
+  <h2>출처 구분</h2>
+  <div class="legend"><span class="pill k-real">실제</span><span class="pill k-syn">제출·가상</span><span class="pill k-syn">내부·가상</span><span class="pill k-reg">규정·가상</span></div>
+</aside>
+<main id="report">
+  <div class="head">
+    <div><span class="stamp" id="stamp">AI 초안 · 심사역 검토 전</span>
+      <h1>기업여신 심사보고서<br>호텔신라 제주 별관 증축</h1></div>
+    <div class="meta">문서번호 CR-2026-C3<br>작성 규칙 기반(offline)<br>생성 2026-09-29 17:27<br>열람 권한 심사역<br>결재 <span id="reviewer">대기</span></div>
+  </div>
+
+  <h3><span class="n">1</span>신청 개요</h3>
+  <dl class="kv"><div><dt>차주</dt><dd>㈜호텔신라 (호텔·면세) <button class="cite" data-src="SUB-01">SUB-01</button></dd></div><div><dt>사업명</dt><dd>호텔신라 제주 별관 증축</dd></div><div><dt>여신과목</dt><dd>시설자금대출 (신규)</dd></div><div><dt>신청금액</dt><dd>420억원</dd></div><div><dt>기간</dt><dd>6년 (거치 2년, 연 10% 분할상환)</dd></div><div><dt>자금용도</dt><dd>호텔신라 제주 별관 증축 공사비 및 부대비용</dd></div><div><dt>담보</dt><dd>사업부지 및 신축건물 1순위 근저당</dd></div><div><dt>시공사</dt><dd>삼성물산</dd></div><div><dt>설계</dt><dd>□□건축사사무소</dd></div><div><dt>총사업비</dt><dd>620억원 (자기자금 200억)</dd></div><div><dt>내부등급</dt><dd>A- (CSS 76점, PD 0.55%) <button class="cite" data-src="INT-02">INT-02</button></dd></div><div><dt>신청금리</dt><dd>CD(91일) + 1.60%p</dd></div><div><dt>적용금리(안)</dt><dd>CD 3.22% (20260929) + 1.70%p = <b>4.92%</b> <button class="cite" data-src="ECOS-CD91">ECOS-CD91</button></dd></div></dl>
+
+  <h3><span class="n">2</span>종합의견</h3>
+  <div class="verdict">
+    <div class="grade"><small>AI 권고</small><b>조건부 승인</b><small>최종 결정은 여신위원회</small></div>
+    <div><p>차주의 매출은 2023년 38,000억원에서 2025년 43,000억원으로 증가했고 부채비율은 177.3%이다 <button class="cite" data-src="SUB-05">SUB-05</button>. 준공 후 DSCR은 1.25배, 신규 사업 현금흐름을 빼면 1.23배로 기준 1.20배를 넘는다 <button class="cite" data-src="REG-02-8">REG-02-8</button>. 자기자금 비율은 32.3%로 기준 30% 이상이다 <button class="cite" data-src="REG-02-10">REG-02-10</button>. 준공 후 LTV는 46.7%로 기준 70% 이내이다 <button class="cite" data-src="SUB-04">SUB-04</button>. 책임준공확약서는 스캔본만 제출되어 원본 확인이 필요하다 <button class="cite" data-src="SUB-03">SUB-03</button>. 사업계획서와 도급계약서의 공사비가 28억원 차이 난다 <button class="cite" data-src="SUB-02">SUB-02</button>. 아래 조건을 붙인 조건부 승인을 권고한다 <button class="cite" data-src="REG-03-5">REG-03-5</button>.</p><b style="font-size:13px">승인 조건</b><ol><li>감리자 확인 공정률에 연동한 분할인출 (시설자금 취급세칙 제14조)</li><li>도급계약 조정 조항에 따른 공사비 증액분 차주 자기부담 확약 (가이드 제7조)</li><li>책임준공확약서 원본과 인감증명서 징구 (가이드 제9조)</li><li>재무약정: 부채비율 200% 이하 유지, 연 1회 점검</li><li>준공 후 재감정 및 건물 근저당 추가 설정</li></ol></div>
+  </div>
+
+  <h3><span class="n">3</span>시장금리 <span class="pill k-real">실제</span></h3>
+  <div class="tbl-wrap"><table><thead><tr><th>지표</th><th class="num">값</th><th class="num">기준일</th><th>조회</th><th>출처</th></tr></thead><tbody><tr><td>CD(91일)</td><td class='num'>3.22%</td><td class='num'>20260929</td><td>실시간</td><td><button class="cite" data-src="ECOS-CD91">ECOS-CD91</button></td></tr><tr><td>한국은행 기준금리</td><td class='num'>3.0%</td><td class='num'>202608</td><td>실시간</td><td><button class="cite" data-src="ECOS-BASERATE">ECOS-BASERATE</button></td></tr><tr><td>국고채(3년)</td><td class='num'>4.076%</td><td class='num'>20260929</td><td>실시간</td><td><button class="cite" data-src="ECOS-KTB3Y">ECOS-KTB3Y</button></td></tr><tr><td>예금은행 대기업대출 금리(신규)</td><td class='num'>4.18%</td><td class='num'>202607</td><td>실시간</td><td><button class="cite" data-src="ECOS-CORPLOANLARGE">ECOS-CORPLOANLARGE</button></td></tr></tbody></table></div>
+
+  <h3><span class="n">4</span>차주 재무분석 <span class="muted">(억원)</span></h3>
+  <p class="muted"><span class="pill m">Fallback</span> DART 미연결로 차주 제출본 사용 <button class="cite" data-src="SUB-05">SUB-05</button>. 공시 대사 전까지 잠정 수치입니다.</p>
+  <div class="tbl-wrap"><table><thead><tr><th>항목</th><th class='num'>2023</th><th class='num'>2024</th><th class='num'>2025</th></tr></thead><tbody><tr><td>매출액</td><td class='num'>38,000</td><td class='num'>41,000</td><td class='num'>43,000</td></tr><tr><td>영업이익</td><td class='num'>900</td><td class='num'>1,100</td><td class='num'>1,250</td></tr><tr><td>영업이익률</td><td class='num'>2.4%</td><td class='num'>2.7%</td><td class='num'>2.9%</td></tr><tr><td>EBITDA</td><td class='num'>2,200</td><td class='num'>2,450</td><td class='num'>2,650</td></tr><tr><td>부채총계</td><td class='num'>21,000</td><td class='num'>20,300</td><td class='num'>19,500</td></tr><tr><td>자본총계</td><td class='num'>9,000</td><td class='num'>10,200</td><td class='num'>11,000</td></tr><tr><td>부채비율</td><td class='num'>233.3%</td><td class='num'>199.0%</td><td class='num'>177.3%</td></tr><tr><td>차입금의존도</td><td class='num'>40.0%</td><td class='num'>40.3%</td><td class='num'>41.0%</td></tr><tr><td>이자보상배율</td><td class='num'>2.0배</td><td class='num'>2.3배</td><td class='num'>2.5배</td></tr><tr><td>영업활동현금흐름</td><td class='num'>2,000</td><td class='num'>2,200</td><td class='num'>2,400</td></tr></tbody></table></div>
+
+  <h3><span class="n">5</span>사업성 지표</h3>
+  <div class="metrics"><div class='metric'><small>총사업비</small><b>620억</b><button class="cite" data-src="SUB-02">SUB-02</button></div><div class='metric'><small>자기자금비율</small><b>32.3%</b><button class="cite" data-src="SUB-02">SUB-02</button></div><div class='metric'><small>신규 연 원리금(거치 후)</small><b>62.7억</b><button class="cite" data-src="SUB-01">SUB-01</button></div><div class='metric'><small>DSCR</small><b>1.25배</b><button class="cite" data-src="SUB-05">SUB-05</button></div><div class='metric'><small>DSCR (사업 현금흐름 제외)</small><b>1.23배</b><button class="cite" data-src="SUB-05">SUB-05</button></div><div class='metric'><small>준공 후 LTV</small><b>46.7%</b><button class="cite" data-src="SUB-04">SUB-04</button></div><div class='metric'><small>토지가치 대비 대출</small><b>110.5%</b><button class="cite" data-src="SUB-04">SUB-04</button></div><div class='metric'><small>대출 후 부채비율</small><b>181.1%</b><button class="cite" data-src="SUB-05">SUB-05</button></div></div>
+  <p class="muted" style="margin-top:8px">DSCR = (EBITDA + 사업 추가 현금흐름 객실수입 증가 55억) ÷ (기존 원리금 + 신규 원리금). 사업 현금흐름 제외값은 EBITDA만 사용.</p>
+
+  <h3><span class="n">6</span>사업 참여자 검증</h3>
+  <div class="party"><article><div class='role'>차주·발주자</div><h4>㈜호텔신라</h4><ul><li>2008년부터 거래, 최근 12개월 연체 0건 <button class="cite" data-src="INT-01">INT-01</button></li><li>기존 여신 900억원, 예금 600억원 <button class="cite" data-src="INT-01">INT-01</button></li><li>재무자료: 차주 제출본 (DART 대사 필요) <button class="cite" data-src="SUB-05">SUB-05</button></li></ul></article><article><div class='role'>시공사</div><h4>삼성물산</h4><ul><li>도급액 548억원, 계약금액 조정 조항 있음 <button class="cite" data-src="SUB-03">SUB-03</button></li><li>책임준공 확약: 스캔본(인감증명서 미첨부), 배상한도 대출원금 전액 <button class="cite" data-src="SUB-03">SUB-03</button></li><li>최근 기사 6건 중 부정 0건 <button class="cite" data-src="NEWS-C1">NEWS-C1</button></li></ul></article><article><div class='role'>설계</div><h4>□□건축사사무소</h4><ul><li>지하 2층 / 지상 8층, 객실 180실 <button class="cite" data-src="SUB-02">SUB-02</button></li><li>용도: 숙박시설 <button class="cite" data-src="SUB-02">SUB-02</button></li></ul></article></div>
+
+  <h3><span class="n">7</span>문서 간 대사</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>항목</th><th>자료 A</th><th>자료 B</th><th class="num">차이(억)</th><th>결과</th></tr></thead><tbody><tr><td>공사비</td><td>사업계획서 520억 <button class="cite" data-src="SUB-02">SUB-02</button></td><td>도급계약서 548억 <button class="cite" data-src="SUB-03">SUB-03</button></td><td class='num'>-28</td><td><span class="pill h">불일치</span></td></tr><tr><td>대출금액</td><td>신청서 420억 <button class="cite" data-src="SUB-01">SUB-01</button></td><td>사업계획서 조달 420억 <button class="cite" data-src="SUB-02">SUB-02</button></td><td class='num'>0</td><td><span class="pill l">일치</span></td></tr><tr><td>차주명</td><td>호텔신라 <button class="cite" data-src="INPUT-1">INPUT-1</button></td><td>호텔신라 <button class="cite" data-src="SUB-01">SUB-01</button></td><td class='num'>–</td><td><span class="pill l">일치</span></td></tr><tr><td>차주 종목코드</td><td>008770 <button class="cite" data-src="INPUT-1">INPUT-1</button></td><td>008770 <button class="cite" data-src="SUB-01">SUB-01</button></td><td class='num'>–</td><td><span class="pill l">일치</span></td></tr><tr><td>시공사</td><td>삼성물산 <button class="cite" data-src="INPUT-1">INPUT-1</button></td><td>삼성물산 <button class="cite" data-src="SUB-01">SUB-01</button></td><td class='num'>–</td><td><span class="pill l">일치</span></td></tr></tbody></table></div>
+
+  <h3><span class="n">8</span>위험요인과 완화방안</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>위험요인</th><th>수준</th><th>근거</th><th>완화방안</th></tr></thead><tbody><tr><td>준공 전 채권보전</td><td><span class="pill m">중간</span></td><td>책임준공 확약이 스캔본(인감증명서 미첨부), 배상한도 대출원금 전액이다 <button class="cite" data-src="SUB-03">SUB-03</button>.</td><td>확약서 원본·배상한도 보강</td></tr><tr><td>공사비 증액</td><td><span class="pill m">중간</span></td><td>도급계약 조정 조항 또는 문서 간 공사비 차이가 있다 <button class="cite" data-src="SUB-03">SUB-03</button>.</td><td>초과분 차주 자기부담 확약</td></tr><tr><td>차주 상환능력</td><td><span class="pill m">중간</span></td><td>DSCR 1.25배 (사업 현금흐름 제외 1.23배) <button class="cite" data-src="SUB-05">SUB-05</button>.</td><td>재무약정 점검</td></tr><tr><td>담보가치</td><td><span class="pill l">낮음</span></td><td>준공 후 LTV 46.7% <button class="cite" data-src="SUB-04">SUB-04</button>.</td><td>준공 후 재감정</td></tr></tbody></table></div>
+
+  <h3><span class="n">9</span>내부규정 적합성</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>규정</th><th>기준</th><th class="num">결과</th><th>판정</th><th>비고</th></tr></thead><tbody><tr><td>여신업무규정 제24조 (재무기준)<br><button class="cite" data-src="REG-01-24">REG-01-24</button></td><td>신규 여신 반영 후 부채비율 200% 이하</td><td class='num'>181.1%</td><td><span class="pill l">적합</span></td><td></td></tr><tr><td>여신업무규정 제24조 (재무기준)<br><button class="cite" data-src="REG-01-24">REG-01-24</button></td><td>이자보상배율 2년 연속 1.5배 미만이면 위원회 승인</td><td class='num'>2.3배 / 2.5배</td><td><span class="pill l">적합</span></td><td></td></tr><tr><td>시설자금대출 취급세칙 제8조 (상환능력)<br><button class="cite" data-src="REG-02-8">REG-02-8</button></td><td>DSCR 1.20배 이상</td><td class='num'>1.25배 (사업현금흐름 제외 1.23배)</td><td><span class="pill l">적합</span></td><td>기준에 근접</td></tr><tr><td>시설자금대출 취급세칙 제10조 (자기자금)<br><button class="cite" data-src="REG-02-10">REG-02-10</button></td><td>자기자금 30% 이상</td><td class='num'>32.3%</td><td><span class="pill l">적합</span></td><td></td></tr><tr><td>시설자금대출 취급세칙 제11조 (담보)<br><button class="cite" data-src="REG-02-11">REG-02-11</button></td><td>준공 후 LTV 70% 이하</td><td class='num'>46.7%</td><td><span class="pill l">적합</span></td><td></td></tr><tr><td>시설자금대출 취급세칙 제11조 (담보)<br><button class="cite" data-src="REG-02-11">REG-02-11</button></td><td>준공 전 토지가치 미달 시 책임준공 등 신용보강</td><td class='num'>토지 대비 110.5%</td><td><span class="pill h">확인필요</span></td><td>확약서가 스캔본만 제출됨</td></tr><tr><td>건설 관련 여신 심사가이드 제5조 (시공사 평가)<br><button class="cite" data-src="REG-03-5">REG-03-5</button></td><td>시공사 책임준공 약정 한도 90% 이하</td><td class='num'>취급 후 42.8%</td><td><span class="pill l">적합</span></td><td></td></tr><tr><td>건설 관련 여신 심사가이드 제7조 (설계변경 리스크)<br><button class="cite" data-src="REG-03-7">REG-03-7</button></td><td>계약금액 조정 조항 시 차주 자기부담 확약</td><td class='num'>도급계약 조정 조항 있음</td><td><span class="pill m">조건부가</span></td><td>공사비 초과분 자기부담 확약</td></tr><tr><td>여신업무규정 제31조 (금리 결정)<br><button class="cite" data-src="REG-01-31">REG-01-31</button></td><td>A- 표준 가산금리 1.70%p ±0.20</td><td class='num'>신청 1.60%p</td><td><span class="pill l">적합</span></td><td>표준보다 0.10%p 낮음</td></tr><tr><td>여신업무규정 제40조 (전결권)<br><button class="cite" data-src="REG-01-40">REG-01-40</button></td><td>300억 초과 시 여신위원회 부의</td><td class='num'>420억</td><td><span class="pill q">위원회</span></td><td></td></tr></tbody></table></div>
+
+  <h3><span class="n">10</span>외부뉴스 <span class="pill k-real">실제</span></h3>
+  <p class="muted">부정·긍정 분류는 키워드 규칙이며, 기사 내용 판단은 심사역이 합니다.</p>
+  <h4 class='sub'>호텔신라</h4><div class='tbl-wrap'><table><tbody><tr><td class='num'>2026-09-29</td><td><a href='https://news.google.com/rss/articles/CBMicEFVX3lxTE16djg5RDRZclBmbWlsQ3hjN2R3WlRtT3ZEZHRtaHhmLUJtY01wblNIcXlidWRfbk4ycUFSNDdlbzRQZjhPczlVM3pCa2gtbzlEZGtKREtLMU42U29kSEpqTXVINXFZUE1obU0tQkxTWFk?oc=5' target='_blank' rel='noopener'>호텔신라, 면세점 매출 성장 한계...목표가 ’하향’ By 알파경제 alphabiz</a> <span class='muted'>Investing.com 한국어</span></td><td><span class="pill h">부정</span> <span class='muted'>하향</span></td><td><button class="cite" data-src="NEWS-B1">NEWS-B1</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMiUkFVX3lxTE1OSWV5ZE9OLWh2Zjg5a3l5aTEzM2VpWVVtREsxWjlyaDhHWHhaSldTYTNoWWwzMldsTHRpQ21KWk9DbkZRQzQ5ZVNZZUEtb2FiLXc?oc=5' target='_blank' rel='noopener'>흥국증권, 호텔신라 목표가↓…&quot;면세점 매출 증가 제한적&quot;</a> <span class='muted'>매일경제 마켓</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-B2">NEWS-B2</button></td></tr><tr><td class='num'>2026-09-29</td><td><a href='https://news.google.com/rss/articles/CBMiYEFVX3lxTE9aR3VUeGNpTUU0WElpY1dNdDZoT1BDMEM0VlVtVzZnWGNhSzkxLWl4ZnZfQWZNMkRLSm5HTHVRTTZoTUJhT0hyVWp4aFFMOVNmTzNHdzNVVkNTTnRkMldWONIBeEFVX3lxTE5HUVc5OFNjWUEyd1MydlRVbUpNUEhBRHVGMFl0RmNSc01fbmhSTHFwYTkwdXNtQ1hrQnNhOXJONUVtV2p4WHhKVFE0MV8wYlpNc1psaXV4SFQ2OEI5Y0VKRE9XaTZGQzlYT21CejNtZE5NTHc5RlEtcg?oc=5' target='_blank' rel='noopener'>호텔신라, 이부진 200억 매입 후 주가 40%↓…실적은 &#x27;반등&#x27;</a> <span class='muted'>뉴시스</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-B3">NEWS-B3</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMiiAFBVV95cUxPbk9qbzE4WEM2YkRMXzJPTFluZ1oxU2l6U3ZHVmpRVVZyM0Q2ZUMwaVdjS0Z3ZEUzS3h5VmpJQVhvTzBtMDBDZTJ3ZUVzRTE3c3kzS3R5T2JMalN5VUJnamJLNHhXVk9DaEozRXI4cXctOGs4U18wZ1BpQzRGT1FsRFJ1WWEySV9V?oc=5' target='_blank' rel='noopener'>흥국證 &quot;호텔신라, 방한 외국인 늘어도 면세점 매출 증가 제한적…목표가↓&quot;</a> <span class='muted'>Chosunbiz</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-B4">NEWS-B4</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMiXEFVX3lxTE9zZGZYSGRRdzZrT1lTRVdNSTQ5UUNXcVM1OEJtYnRGUzdGRHJUVTd1Y01JMEFWd29CQWwwRTFMNkVxZU1Qb3hnNmc0Ym1uYUFMYXcxZXhyV1VnM2pI?oc=5' target='_blank' rel='noopener'>[모닝 리포트] &quot;호텔신라, 면세 흑자전환에도 주가 재평가 과제&quot;</a> <span class='muted'>뉴스핌</span></td><td><span class="pill l">긍정</span> <span class='muted'>흑자</span></td><td><button class="cite" data-src="NEWS-B5">NEWS-B5</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMiYEFVX3lxTE02S1B1aUhLbk9KQnMwUE4teEpTT1I0SUY1V3FRMmFXRTRqVkNXSnBzN0NuLVg0aEhFUVZYcENsUC15eWtHbU1Wd3l3T09Xdy1jRldYY2FtY1dNQnBZTDhkbNIBeEFVX3lxTE53T243VnFKUHdpVE4xWU9meDFLcFNhMXJYeHhDZ0NFRWV2bUQ2Q1JSLU9mdFdPZkFDUzRCUEs3aUVlV0hhc3BKMnJDNnk4QjB0cHFxUlRTdkZ5UnVRbGxqTnZoeUFmVFJ1djduMnVHbFZ5R3YteGM0aA?oc=5' target='_blank' rel='noopener'>흥국證 &quot;호텔신라, 외국인 늘었지만 면세점 실적 제한적…목표가↓&quot;</a> <span class='muted'>뉴시스</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-B6">NEWS-B6</button></td></tr></tbody></table></div><h4 class='sub'>삼성물산</h4><div class='tbl-wrap'><table><tbody><tr><td class='num'>2026-09-26</td><td><a href='https://news.google.com/rss/articles/CBMiaEFVX3lxTE9USVBqMWdRcUVWa2s5eWNjWlp1Z0pfZkI5UHFvZ0FwOXNHQkFVNUtPZnVlc3NiTnRzTW9EUnRkb240T01EQ1EtNzEtWk00NEZJVUpVUnRqU1lCRE9iRXNxLW1qY3FaUV950gFsQVVfeXFMTWdvTmJXR2ZyZmxXZnFPRjFyTFZhR0F0MzdVRzlSQ3N4WV9xVXZLVmhSNFp2NkpqaWpoWnRzZUMzMEFqR1dUZGJqWHdGNFRUdl92b045REZWMkZ4eXpDRW1KaEVUQmxLNzBpYmJ6?oc=5' target='_blank' rel='noopener'>삼성물산, SMR 영토 확장…미국·유럽 사업화 속도</a> <span class='muted'>블로터</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-C1">NEWS-C1</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMiYEFVX3lxTE1HWHcwVjkyVnI3bzY3OHBoSjVaRWNxaW9sLXQzTl9mcGVUY29xSzNLZG94V2pwV1FWVk9OVTdCU19fanpzcWxtd0J4TzZyNlQ3Smt4NXlMWHJhbWdubTNpdNIBeEFVX3lxTE1SUkUzdGFSVGU5M3pFMEM0UXpzZklpaVFhS2FTTDBOTzNtVzlPMHd1N1B1Nnd0bGdqVnNfUWtWOXM4UDR5OTZXcTlKMFFMclRIQWJoeFNOLW5UdFdUMWxRWmZycHZlS2tYYlFvWlcta05QbWpaTUZ2cA?oc=5' target='_blank' rel='noopener'>[속보]삼성전자·삼성물산 등 6개사, 美 AI 인프라 기업 &#x27;헬릭스&#x27;에 1.3조 투자</a> <span class='muted'>뉴시스</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-C2">NEWS-C2</button></td></tr><tr><td class='num'>2026-09-29</td><td><a href='https://news.google.com/rss/articles/CBMic0FVX3lxTE45V1Fia0ZGMFVSajlRVGdTNEh1WW5SdTNSRFpzWXR5b3VuYjl5NTZzWm5yZlMyZDd5cmRtV0JlQ3NzSTgwNHdPaFBvaGJNQ081SWl3ZGR6MUNFYm5uZUJTQ2JLbUZwbkVlRlN0YTQ5RTVIMms?oc=5' target='_blank' rel='noopener'>삼성물산 상사부문 호주 ESS 프로젝트 전력망 연결 승인 받아, &quot;재생에너지 설비 통합에 기여&quot;</a> <span class='muted'>비즈니스포스트</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-C3">NEWS-C3</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMiakFVX3lxTE9qMlNFRExmbjNRQU9uaDFaelo3YVJ0TlRXZmthdTBuNEtSbnVwelU5LWlzOW9oR3RFdFNidmhHNUpTT2w3UmI5WGdSSjV5aHZpS3ZzMmZuWjZ5QXMzWmVUaEFMc0RSLXBMN2fSAW9BVV95cUxQRTZKQkkzZUREOW1jV3UxU1lBZ3NxV1NLOUhXb1l2cGFLVUZRQ1FTOXlGeXg3V2I0YkVjNmdQbzc0ZWttb3FfSTEtSEdUWGNYQTlDX1R2MUNRb1ltV3l5OUhmVFNsb1YwSW90QzdsdWs?oc=5' target='_blank' rel='noopener'>삼성물산, 건식접합공법으로 내진 최고 등급 획득…넥스트홈 혁신 가속화 - 머니투데이</a> <span class='muted'>mt.co.kr</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-C4">NEWS-C4</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMicEFVX3lxTE92elVxcE5uZV8xaE16NXlRd3ppako3dHBGUC1XUk56RGNLdDlMQlZwb19ta2FFWS1ZSE43LWlSQU5iVHhpNm1yQUpoMGo2elU5SXRXYzRVSmRVYjcxTmlPNzZkUnpNU2NEYXJLd0RCOFM?oc=5' target='_blank' rel='noopener'>삼성물산 파트너 ’GE 버노바 히타치’ 테네시 SMR 프로젝트 승인 임박 By The Guru</a> <span class='muted'>Investing.com 한국어</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-C5">NEWS-C5</button></td></tr><tr><td class='num'>2026-09-28</td><td><a href='https://news.google.com/rss/articles/CBMiUkFVX3lxTE5Bbm9pSmF3VktXaVAyVURZMmZYMzdpMWh0N2dFODMteGcwZXMyNjB4VTdLMGt5eTRhWEVvYlJidlQtM29tRGpUaDdLUXJhR0RHc3c?oc=5' target='_blank' rel='noopener'>삼성물산 패션부문, SSF샵 11주년 행사…50% 할인 쿠폰 지급</a> <span class='muted'>매일경제 마켓</span></td><td><span class="pill q">중립</span></td><td><button class="cite" data-src="NEWS-C6">NEWS-C6</button></td></tr></tbody></table></div>
+
+  <h3><span class="n">11</span>심사역 확인 (Human-in-the-loop)</h3>
+  <div class="hitl">
+    <p><b>Agent가 확정하지 않고 사람에게 넘긴 5개 항목입니다.</b> 모두 확인해야 상신할 수 있습니다.</p>
+    <label><input type="checkbox" class="hc" id="h0"> <span><b>재무제표를 DART 공시와 대사</b><br><span class="muted">DART에 연결하지 못해 차주가 제출한 수치로 분석했습니다 (여신업무규정 제12조②)</span></span></label><label><input type="checkbox" class="hc" id="h1"> <span><b>REG-02-11 확인필요: 준공 전 토지가치 미달 시 책임준공 등 신용보강</b><br><span class="muted">확약서가 스캔본만 제출됨</span></span></label><label><input type="checkbox" class="hc" id="h2"> <span><b>공사비 불일치 확인</b><br><span class="muted">사업계획서 520억 <button class="cite" data-src="SUB-02">SUB-02</button> vs 도급계약서 548억 <button class="cite" data-src="SUB-03">SUB-03</button></span></span></label><label><input type="checkbox" class="hc" id="h3"> <span><b>책임준공확약서 원본·인감증명서 징구</b><br><span class="muted">스캔본만 제출됨 <button class="cite" data-src="REG-03-9">REG-03-9</button></span></span></label><label><input type="checkbox" class="hc" id="h4"> <span><b>여신위원회 부의 안건 등록</b><br><span class="muted">신청 420억, 전결 한도 300억 초과 <button class="cite" data-src="REG-01-40">REG-01-40</button></span></span></label>
+    <textarea id="opinion" placeholder="심사역 의견 (AI 초안 수정 사항, 추가 조건 등)"></textarea>
+    <div class="decide">
+      <button class="btn primary" id="d-ok" disabled>조건부 승인으로 상신</button>
+      <button class="btn" id="d-mod">재작성 요청</button>
+      <button class="btn" id="d-no">반려</button>
+      <span class="muted" id="d-hint"></span>
+    </div>
+  </div>
+
+  <h3><span class="n">12</span>출처</h3>
+  <ul class="src"><li id='s-ECOS-CD91'><code>ECOS-CD91</code><span><span class="pill k-real">실제</span> CD(91일) (20260929)<br><span class='muted'>한국은행 ECOS 817Y002 · 2026-09-29 17:27:09</span></span></li><li id='s-ECOS-BASERATE'><code>ECOS-BASERATE</code><span><span class="pill k-real">실제</span> 한국은행 기준금리 (202608)<br><span class='muted'>한국은행 ECOS 722Y001 · 2026-09-29 17:27:09</span></span></li><li id='s-ECOS-KTB3Y'><code>ECOS-KTB3Y</code><span><span class="pill k-real">실제</span> 국고채(3년) (20260929)<br><span class='muted'>한국은행 ECOS 817Y002 · 2026-09-29 17:27:09</span></span></li><li id='s-ECOS-CORPLOANLARGE'><code>ECOS-CORPLOANLARGE</code><span><span class="pill k-real">실제</span> 예금은행 대기업대출 금리(신규) (202607)<br><span class='muted'>한국은행 ECOS 121Y006 · 2026-09-29 17:27:09</span></span></li><li id='s-NEWS-B1'><code>NEWS-B1</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMicEFVX3lxTE16djg5RDRZclBmbWlsQ3hjN2R3WlRtT3ZEZHRtaHhmLUJtY01wblNIcXlidWRfbk4ycUFSNDdlbzRQZjhPczlVM3pCa2gtbzlEZGtKREtLMU42U29kSEpqTXVINXFZUE1obU0tQkxTWFk?oc=5' target='_blank' rel='noopener'>호텔신라, 면세점 매출 성장 한계...목표가 ’하향’ By 알파경제 alphabiz (Investing.com 한국어, 2026-09-29)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:10</span></span></li><li id='s-NEWS-B2'><code>NEWS-B2</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiUkFVX3lxTE1OSWV5ZE9OLWh2Zjg5a3l5aTEzM2VpWVVtREsxWjlyaDhHWHhaSldTYTNoWWwzMldsTHRpQ21KWk9DbkZRQzQ5ZVNZZUEtb2FiLXc?oc=5' target='_blank' rel='noopener'>흥국증권, 호텔신라 목표가↓…&quot;면세점 매출 증가 제한적&quot; (매일경제 마켓, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:10</span></span></li><li id='s-NEWS-B3'><code>NEWS-B3</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiYEFVX3lxTE9aR3VUeGNpTUU0WElpY1dNdDZoT1BDMEM0VlVtVzZnWGNhSzkxLWl4ZnZfQWZNMkRLSm5HTHVRTTZoTUJhT0hyVWp4aFFMOVNmTzNHdzNVVkNTTnRkMldWONIBeEFVX3lxTE5HUVc5OFNjWUEyd1MydlRVbUpNUEhBRHVGMFl0RmNSc01fbmhSTHFwYTkwdXNtQ1hrQnNhOXJONUVtV2p4WHhKVFE0MV8wYlpNc1psaXV4SFQ2OEI5Y0VKRE9XaTZGQzlYT21CejNtZE5NTHc5RlEtcg?oc=5' target='_blank' rel='noopener'>호텔신라, 이부진 200억 매입 후 주가 40%↓…실적은 &#x27;반등&#x27; (뉴시스, 2026-09-29)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:10</span></span></li><li id='s-NEWS-B4'><code>NEWS-B4</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiiAFBVV95cUxPbk9qbzE4WEM2YkRMXzJPTFluZ1oxU2l6U3ZHVmpRVVZyM0Q2ZUMwaVdjS0Z3ZEUzS3h5VmpJQVhvTzBtMDBDZTJ3ZUVzRTE3c3kzS3R5T2JMalN5VUJnamJLNHhXVk9DaEozRXI4cXctOGs4U18wZ1BpQzRGT1FsRFJ1WWEySV9V?oc=5' target='_blank' rel='noopener'>흥국證 &quot;호텔신라, 방한 외국인 늘어도 면세점 매출 증가 제한적…목표가↓&quot; (Chosunbiz, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:10</span></span></li><li id='s-NEWS-B5'><code>NEWS-B5</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiXEFVX3lxTE9zZGZYSGRRdzZrT1lTRVdNSTQ5UUNXcVM1OEJtYnRGUzdGRHJUVTd1Y01JMEFWd29CQWwwRTFMNkVxZU1Qb3hnNmc0Ym1uYUFMYXcxZXhyV1VnM2pI?oc=5' target='_blank' rel='noopener'>[모닝 리포트] &quot;호텔신라, 면세 흑자전환에도 주가 재평가 과제&quot; (뉴스핌, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:10</span></span></li><li id='s-NEWS-B6'><code>NEWS-B6</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiYEFVX3lxTE02S1B1aUhLbk9KQnMwUE4teEpTT1I0SUY1V3FRMmFXRTRqVkNXSnBzN0NuLVg0aEhFUVZYcENsUC15eWtHbU1Wd3l3T09Xdy1jRldYY2FtY1dNQnBZTDhkbNIBeEFVX3lxTE53T243VnFKUHdpVE4xWU9meDFLcFNhMXJYeHhDZ0NFRWV2bUQ2Q1JSLU9mdFdPZkFDUzRCUEs3aUVlV0hhc3BKMnJDNnk4QjB0cHFxUlRTdkZ5UnVRbGxqTnZoeUFmVFJ1djduMnVHbFZ5R3YteGM0aA?oc=5' target='_blank' rel='noopener'>흥국證 &quot;호텔신라, 외국인 늘었지만 면세점 실적 제한적…목표가↓&quot; (뉴시스, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:10</span></span></li><li id='s-NEWS-C1'><code>NEWS-C1</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiaEFVX3lxTE9USVBqMWdRcUVWa2s5eWNjWlp1Z0pfZkI5UHFvZ0FwOXNHQkFVNUtPZnVlc3NiTnRzTW9EUnRkb240T01EQ1EtNzEtWk00NEZJVUpVUnRqU1lCRE9iRXNxLW1qY3FaUV950gFsQVVfeXFMTWdvTmJXR2ZyZmxXZnFPRjFyTFZhR0F0MzdVRzlSQ3N4WV9xVXZLVmhSNFp2NkpqaWpoWnRzZUMzMEFqR1dUZGJqWHdGNFRUdl92b045REZWMkZ4eXpDRW1KaEVUQmxLNzBpYmJ6?oc=5' target='_blank' rel='noopener'>삼성물산, SMR 영토 확장…미국·유럽 사업화 속도 (블로터, 2026-09-26)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:12</span></span></li><li id='s-NEWS-C2'><code>NEWS-C2</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiYEFVX3lxTE1HWHcwVjkyVnI3bzY3OHBoSjVaRWNxaW9sLXQzTl9mcGVUY29xSzNLZG94V2pwV1FWVk9OVTdCU19fanpzcWxtd0J4TzZyNlQ3Smt4NXlMWHJhbWdubTNpdNIBeEFVX3lxTE1SUkUzdGFSVGU5M3pFMEM0UXpzZklpaVFhS2FTTDBOTzNtVzlPMHd1N1B1Nnd0bGdqVnNfUWtWOXM4UDR5OTZXcTlKMFFMclRIQWJoeFNOLW5UdFdUMWxRWmZycHZlS2tYYlFvWlcta05QbWpaTUZ2cA?oc=5' target='_blank' rel='noopener'>[속보]삼성전자·삼성물산 등 6개사, 美 AI 인프라 기업 &#x27;헬릭스&#x27;에 1.3조 투자 (뉴시스, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:12</span></span></li><li id='s-NEWS-C3'><code>NEWS-C3</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMic0FVX3lxTE45V1Fia0ZGMFVSajlRVGdTNEh1WW5SdTNSRFpzWXR5b3VuYjl5NTZzWm5yZlMyZDd5cmRtV0JlQ3NzSTgwNHdPaFBvaGJNQ081SWl3ZGR6MUNFYm5uZUJTQ2JLbUZwbkVlRlN0YTQ5RTVIMms?oc=5' target='_blank' rel='noopener'>삼성물산 상사부문 호주 ESS 프로젝트 전력망 연결 승인 받아, &quot;재생에너지 설비 통합에 기여&quot; (비즈니스포스트, 2026-09-29)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:12</span></span></li><li id='s-NEWS-C4'><code>NEWS-C4</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiakFVX3lxTE9qMlNFRExmbjNRQU9uaDFaelo3YVJ0TlRXZmthdTBuNEtSbnVwelU5LWlzOW9oR3RFdFNidmhHNUpTT2w3UmI5WGdSSjV5aHZpS3ZzMmZuWjZ5QXMzWmVUaEFMc0RSLXBMN2fSAW9BVV95cUxQRTZKQkkzZUREOW1jV3UxU1lBZ3NxV1NLOUhXb1l2cGFLVUZRQ1FTOXlGeXg3V2I0YkVjNmdQbzc0ZWttb3FfSTEtSEdUWGNYQTlDX1R2MUNRb1ltV3l5OUhmVFNsb1YwSW90QzdsdWs?oc=5' target='_blank' rel='noopener'>삼성물산, 건식접합공법으로 내진 최고 등급 획득…넥스트홈 혁신 가속화 - 머니투데이 (mt.co.kr, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:12</span></span></li><li id='s-NEWS-C5'><code>NEWS-C5</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMicEFVX3lxTE92elVxcE5uZV8xaE16NXlRd3ppako3dHBGUC1XUk56RGNLdDlMQlZwb19ta2FFWS1ZSE43LWlSQU5iVHhpNm1yQUpoMGo2elU5SXRXYzRVSmRVYjcxTmlPNzZkUnpNU2NEYXJLd0RCOFM?oc=5' target='_blank' rel='noopener'>삼성물산 파트너 ’GE 버노바 히타치’ 테네시 SMR 프로젝트 승인 임박 By The Guru (Investing.com 한국어, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:12</span></span></li><li id='s-NEWS-C6'><code>NEWS-C6</code><span><span class="pill k-real">실제</span> <a href='https://news.google.com/rss/articles/CBMiUkFVX3lxTE5Bbm9pSmF3VktXaVAyVURZMmZYMzdpMWh0N2dFODMteGcwZXMyNjB4VTdLMGt5eTRhWEVvYlJidlQtM29tRGpUaDdLUXJhR0RHc3c?oc=5' target='_blank' rel='noopener'>삼성물산 패션부문, SSF샵 11주년 행사…50% 할인 쿠폰 지급 (매일경제 마켓, 2026-09-28)</a><br><span class='muted'>Google News RSS · 2026-09-29 17:27:12</span></span></li><li id='s-INPUT-1'><code>INPUT-1</code><span><span class="pill k-syn">제출·가상</span> 업로드 화면 입력 기업정보<br><span class='muted'>심사 요청자 입력 · 2026-09-29 17:27:09</span></span></li><li id='s-SUB-01'><code>SUB-01</code><span><span class="pill k-syn">제출·가상</span> 여신거래신청서<br><span class='muted'>차주 제출서류 (가상) · 2026-09-29 17:27:09</span></span></li><li id='s-SUB-02'><code>SUB-02</code><span><span class="pill k-syn">제출·가상</span> 사업계획서<br><span class='muted'>차주 제출서류 (가상) · 2026-09-29 17:27:09</span></span></li><li id='s-SUB-03'><code>SUB-03</code><span><span class="pill k-syn">제출·가상</span> 공사도급계약서(책임준공 포함)<br><span class='muted'>차주 제출서류 (가상) · 2026-09-29 17:27:09</span></span></li><li id='s-SUB-04'><code>SUB-04</code><span><span class="pill k-syn">제출·가상</span> 감정평가서<br><span class='muted'>차주 제출서류 (가상) · 2026-09-29 17:27:09</span></span></li><li id='s-SUB-05'><code>SUB-05</code><span><span class="pill k-syn">제출·가상</span> 재무제표 (차주 제출)<br><span class='muted'>차주 제출서류 (가상) · 2026-09-29 17:27:09</span></span></li><li id='s-INT-01'><code>INT-01</code><span><span class="pill k-syn">내부·가상</span> 차주 거래현황<br><span class='muted'>여신원장 (가상) · 2026-09-29 17:27:09</span></span></li><li id='s-INT-02'><code>INT-02</code><span><span class="pill k-syn">내부·가상</span> 내부신용등급(CSS)<br><span class='muted'>기업신용평가시스템 (가상) · 2026-09-29 17:27:09</span></span></li><li id='s-INT-03'><code>INT-03</code><span><span class="pill k-syn">내부·가상</span> 시공사 책임준공 약정 관리현황<br><span class='muted'>리스크관리 DB (가상) · 2026-09-29 17:27:09</span></span></li><li id='s-REG-01-24'><code>REG-01-24</code><span><span class="pill k-reg">규정·가상</span> 여신업무규정 제24조 (재무기준)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li><li id='s-REG-02-8'><code>REG-02-8</code><span><span class="pill k-reg">규정·가상</span> 시설자금대출 취급세칙 제8조 (상환능력)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li><li id='s-REG-01-12'><code>REG-01-12</code><span><span class="pill k-reg">규정·가상</span> 여신업무규정 제12조 (여신심사의 원칙)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li><li id='s-REG-02-10'><code>REG-02-10</code><span><span class="pill k-reg">규정·가상</span> 시설자금대출 취급세칙 제10조 (자기자금)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li><li id='s-REG-02-11'><code>REG-02-11</code><span><span class="pill k-reg">규정·가상</span> 시설자금대출 취급세칙 제11조 (담보)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li><li id='s-REG-03-5'><code>REG-03-5</code><span><span class="pill k-reg">규정·가상</span> 건설 관련 여신 심사가이드 제5조 (시공사 평가)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li><li id='s-REG-03-7'><code>REG-03-7</code><span><span class="pill k-reg">규정·가상</span> 건설 관련 여신 심사가이드 제7조 (설계변경 리스크)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li><li id='s-REG-01-40'><code>REG-01-40</code><span><span class="pill k-reg">규정·가상</span> 여신업무규정 제40조 (전결권)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li><li id='s-REG-01-31'><code>REG-01-31</code><span><span class="pill k-reg">규정·가상</span> 여신업무규정 제31조 (금리 결정)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li><li id='s-REG-03-9'><code>REG-03-9</code><span><span class="pill k-reg">규정·가상</span> 건설 관련 여신 심사가이드 제9조 (서류 확인)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li><li id='s-REG-02-14'><code>REG-02-14</code><span><span class="pill k-reg">규정·가상</span> 시설자금대출 취급세칙 제14조 (분할인출)<br><span class='muted'>사내 규정 DB (가상) · 2026-09-29 17:27:12</span></span></li></ul>
+
+  <h3><span class="n">13</span>감사로그</h3>
+  <pre class="audit" id="audit">[17:27:09] START     심사 요청 C3 접수 (역할: 심사역, 모드: offline)
+[17:27:09] TOOL      list_documents({})
+[17:27:09] TOOL      read_document({&quot;doc_id&quot;: &quot;SUB-01&quot;})
+[17:27:09] READ      SUB-01 여신거래신청서
+[17:27:09] TOOL      read_document({&quot;doc_id&quot;: &quot;SUB-02&quot;})
+[17:27:09] READ      SUB-02 사업계획서
+[17:27:09] TOOL      read_document({&quot;doc_id&quot;: &quot;SUB-03&quot;})
+[17:27:09] READ      SUB-03 공사도급계약서(책임준공 포함)
+[17:27:09] TOOL      read_document({&quot;doc_id&quot;: &quot;SUB-04&quot;})
+[17:27:09] READ      SUB-04 감정평가서
+[17:27:09] TOOL      get_internal_record({&quot;record_id&quot;: &quot;INT-01&quot;})
+[17:27:09] READ      INT-01 차주 거래현황 (민감도 internal)
+[17:27:09] TOOL      get_internal_record({&quot;record_id&quot;: &quot;INT-02&quot;})
+[17:27:09] READ      INT-02 내부신용등급(CSS) (민감도 restricted)
+[17:27:09] TOOL      get_internal_record({&quot;record_id&quot;: &quot;INT-03&quot;})
+[17:27:09] READ      INT-03 시공사 책임준공 약정 관리현황 (민감도 internal)
+[17:27:09] TOOL      get_financials({})
+[17:27:09] FALLBACK  dart_fin_008770 실시간 조회 실패: DART 012: 접근할 수 없는 IP입니다.(121.134.129.225)
+[17:27:09] FALLBACK  DART 미연결 → 차주 제출 재무제표(SUB-05)로 대체
+[17:27:09] TOOL      get_market_rates({})
+[17:27:09] LIVE      ecos_cd91 조회 성공 (0.1s)
+[17:27:09] LIVE      ecos_base_rate 조회 성공 (0.1s)
+[17:27:09] LIVE      ecos_ktb3y 조회 성공 (0.1s)
+[17:27:09] LIVE      ecos_corp_loan_large 조회 성공 (0.2s)
+[17:27:09] TOOL      search_news({&quot;company&quot;: &quot;호텔신라&quot;})
+[17:27:10] LIVE      news_호텔신라 조회 성공 (1.2s)
+[17:27:10] TOOL      search_news({&quot;company&quot;: &quot;삼성물산&quot;})
+[17:27:12] LIVE      news_삼성물산 조회 성공 (1.2s)
+[17:27:12] TOOL      run_checks({})
+[17:27:12] RAG       &#x27;부채비율 재무기준&#x27; → REG-01-24(1.0)
+[17:27:12] RAG       &#x27;DSCR 상환능력&#x27; → REG-02-8(1.0), REG-01-12(0.34)
+[17:27:12] RAG       &#x27;자기자금 비율&#x27; → REG-02-10(1.0), REG-02-11(0.37)
+[17:27:12] RAG       &#x27;LTV 담보&#x27; → REG-02-11(1.0)
+[17:27:12] RAG       &#x27;시공사 행정처분&#x27; → REG-03-5(1.0)
+[17:27:12] RAG       &#x27;설계변경 공사비 조정&#x27; → REG-03-7(1.0)
+[17:27:12] RAG       &#x27;전결권 여신위원회&#x27; → REG-01-40(1.0), REG-01-24(0.48)
+[17:27:12] RAG       &#x27;가산금리&#x27; → REG-01-31(1.0)
+[17:27:12] RAG       &#x27;책임준공확약서 원본 인감증명서&#x27; → REG-03-9(1.0), REG-02-11(0.33)
+[17:27:12] RAG       &#x27;분할인출 공정률&#x27; → REG-02-14(1.0), REG-03-5(0.59)
+[17:27:12] CHECK     규정 10건 판정, 대사 5건, 사람 확인 5건, 규칙상 권고 조건부 승인
+[17:27:12] TOOL      submit_report({&quot;recommendation&quot;: &quot;조건부 승인&quot;, &quot;opinion&quot;: &quot;차주의 매출은 2023년 38,000억원에서 2025년 43,000억원)
+[17:27:12] DRAFT     보고서 초안 제출 (권고: 조건부 승인)
+[17:27:12] HITL      심사역 확인 대기 5건. 사람 결재 전까지 보고서는 초안 상태</pre>
+
+  <p class="foot">모든 판단 문장에는 출처가 연결되어 있고, 출처 없는 문장이 있으면 보고서 제출 단계에서 반려됩니다. 숫자는 코드가 계산하고 AI는 서술만 작성합니다. 최종 여신 결정은 심사역과 여신위원회가 합니다.</p>
+</main></div></div>
+<script>
+(function(){
+  var canApprove=true,decided=false;
+  var checks=[].slice.call(document.querySelectorAll('.hc')),ok=document.getElementById('d-ok'),
+      mod=document.getElementById('d-mod'),no=document.getElementById('d-no'),hint=document.getElementById('d-hint'),audit=document.getElementById('audit');
+  function t(){return new Date().toTimeString().slice(0,8);}
+  function log(m){audit.textContent+='\n['+t()+'] REVIEW    '+m;audit.scrollTop=audit.scrollHeight;}
+  function upd(){
+    var n=checks.filter(function(c){return c.checked;}).length;
+    checks.forEach(function(c){c.disabled=!canApprove||decided;});
+    ok.disabled=!(canApprove&&!decided&&n===checks.length);mod.disabled=no.disabled=!canApprove||decided;
+    hint.textContent=decided?'결재 완료':(!canApprove?'이 역할은 열람만 가능합니다':'확인 '+n+' / '+checks.length);
+  }
+  checks.forEach(function(c){c.addEventListener('change',function(){log((c.checked?'확인 ':'해제 ')+c.nextElementSibling.querySelector('b').textContent);upd();});});
+  function decide(label){
+    decided=true;var s=document.getElementById('stamp');s.textContent='심사역 결재 · '+label;s.classList.add('done');
+    document.getElementById('reviewer').textContent=label;var op=document.getElementById('opinion').value.trim();
+    log('결정: '+label+(op?' / 의견: '+op:''));upd();
+  }
+  ok.onclick=function(){decide('조건부 승인 상신');};mod.onclick=function(){decide('재작성 요청');};no.onclick=function(){decide('반려');};
+  document.getElementById('report').addEventListener('click',function(e){
+    var b=e.target.closest('.cite');if(!b)return;var li=document.getElementById('s-'+b.dataset.src);if(!li)return;
+    li.scrollIntoView({behavior:'smooth',block:'center'});li.classList.add('flash');setTimeout(function(){li.classList.remove('flash');},1400);
+  });
+  upd();
+})();
+</script>

@@ -1,0 +1,53 @@
+{
+ "_meta": {
+  "title": "재무제표 요약(연결) 2023~2025",
+  "company": "㈜CJ대한통운",
+  "unit": "억원",
+  "synthetic": true,
+  "note": "PoC 시연용 가상 수치. DART 연결 시 공시 수치로 대체·대사됨"
+ },
+ "years": {
+  "2023": {
+   "revenue": 117000,
+   "operating_income": 4800,
+   "net_income": 1900,
+   "total_assets": 90000,
+   "total_liabilities": 55000,
+   "total_equity": 35000,
+   "borrowings": 25000,
+   "interest_expense": 1100,
+   "depreciation": 4200,
+   "operating_cf": 7500,
+   "cash": 5200,
+   "annual_debt_service": 6500
+  },
+  "2024": {
+   "revenue": 118500,
+   "operating_income": 4950,
+   "net_income": 2000,
+   "total_assets": 92000,
+   "total_liabilities": 55500,
+   "total_equity": 36500,
+   "borrowings": 25500,
+   "interest_expense": 1150,
+   "depreciation": 4300,
+   "operating_cf": 7700,
+   "cash": 5400,
+   "annual_debt_service": 6500
+  },
+  "2025": {
+   "revenue": 121000,
+   "operating_income": 5100,
+   "net_income": 2100,
+   "total_assets": 94000,
+   "total_liabilities": 56000,
+   "total_equity": 38000,
+   "borrowings": 26000,
+   "interest_expense": 1150,
+   "depreciation": 4400,
+   "operating_cf": 7900,
+   "cash": 5600,
+   "annual_debt_service": 6500
+  }
+ }
+}

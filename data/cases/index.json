@@ -1,0 +1,104 @@
+[
+ {
+  "case_id": "C1",
+  "project": "HDC랩스 스마트빌딩 R&D센터 신축",
+  "loan": 480,
+  "borrower": {
+   "name": "HDC랩스",
+   "stock_code": "039570",
+   "industry": "부동산 관리·스마트홈 솔루션"
+  },
+  "contractor": {
+   "name": "GS건설",
+   "stock_code": "006360"
+  },
+  "architect": {
+   "name": "○○종합건축사사무소"
+  }
+ },
+ {
+  "case_id": "C2",
+  "project": "CJ대한통운 이천 스마트 물류센터 신축",
+  "loan": 280,
+  "borrower": {
+   "name": "CJ대한통운",
+   "stock_code": "000120",
+   "industry": "종합물류"
+  },
+  "contractor": {
+   "name": "DL이앤씨",
+   "stock_code": "375500"
+  },
+  "architect": {
+   "name": "△△건축사사무소"
+  }
+ },
+ {
+  "case_id": "C3",
+  "project": "호텔신라 제주 별관 증축",
+  "loan": 420,
+  "borrower": {
+   "name": "호텔신라",
+   "stock_code": "008770",
+   "industry": "호텔·면세"
+  },
+  "contractor": {
+   "name": "삼성물산",
+   "stock_code": "028260"
+  },
+  "architect": {
+   "name": "□□건축사사무소"
+  }
+ },
+ {
+  "case_id": "C4",
+  "project": "오리온 진천 제2생산공장 신축",
+  "loan": 700,
+  "borrower": {
+   "name": "오리온",
+   "stock_code": "271560",
+   "industry": "식품 제조"
+  },
+  "contractor": {
+   "name": "대우건설",
+   "stock_code": "047040"
+  },
+  "architect": {
+   "name": "◇◇건축사사무소"
+  }
+ },
+ {
+  "case_id": "C5",
+  "project": "카카오 안산 데이터센터 2단계 신축",
+  "loan": 850,
+  "borrower": {
+   "name": "카카오",
+   "stock_code": "035720",
+   "industry": "인터넷 플랫폼"
+  },
+  "contractor": {
+   "name": "현대건설",
+   "stock_code": "000720"
+  },
+  "architect": {
+   "name": "☆☆건축사사무소"
+  }
+ },
+ {
+  "case_id": "C6",
+  "project": "이마트 하남 복합쇼핑몰 증축",
+  "loan": 550,
+  "borrower": {
+   "name": "이마트",
+   "stock_code": "139480",
+   "industry": "대형 유통"
+  },
+  "contractor": {
+   "name": "HDC현대산업개발",
+   "stock_code": "294870"
+  },
+  "architect": {
+   "name": "▽▽건축사사무소"
+  }
+ }
+]

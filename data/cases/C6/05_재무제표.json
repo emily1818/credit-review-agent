@@ -1,0 +1,53 @@
+{
+ "_meta": {
+  "title": "재무제표 요약(연결) 2023~2025",
+  "company": "㈜이마트",
+  "unit": "억원",
+  "synthetic": true,
+  "note": "PoC 시연용 가상 수치. DART 연결 시 공시 수치로 대체·대사됨"
+ },
+ "years": {
+  "2023": {
+   "revenue": 290000,
+   "operating_income": 1300,
+   "net_income": 200,
+   "total_assets": 280000,
+   "total_liabilities": 160000,
+   "total_equity": 120000,
+   "borrowings": 70000,
+   "interest_expense": 1000,
+   "depreciation": 13000,
+   "operating_cf": 16000,
+   "cash": 12000,
+   "annual_debt_service": 11000
+  },
+  "2024": {
+   "revenue": 295000,
+   "operating_income": 1000,
+   "net_income": -300,
+   "total_assets": 279000,
+   "total_liabilities": 162000,
+   "total_equity": 119000,
+   "borrowings": 71000,
+   "interest_expense": 1000,
+   "depreciation": 13000,
+   "operating_cf": 15500,
+   "cash": 11500,
+   "annual_debt_service": 11000
+  },
+  "2025": {
+   "revenue": 298000,
+   "operating_income": 1700,
+   "net_income": 600,
+   "total_assets": 282000,
+   "total_liabilities": 161000,
+   "total_equity": 121000,
+   "borrowings": 70000,
+   "interest_expense": 1000,
+   "depreciation": 13000,
+   "operating_cf": 16500,
+   "cash": 12500,
+   "annual_debt_service": 11000
+  }
+ }
+}

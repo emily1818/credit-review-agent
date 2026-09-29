@@ -1,0 +1,92 @@
+{
+ "_meta": {
+  "title": "차주 DB (가상)",
+  "synthetic": true
+ },
+ "borrowers": {
+  "HDC랩스": {
+   "grade": {
+    "grade": "BBB+",
+    "css_score": 71,
+    "pd_1y_pct": 0.92,
+    "as_of": "2026-09-20"
+   },
+   "relationship": {
+    "relationship_since": "2014",
+    "existing_loans_krw_100m": 240,
+    "deposits_krw_100m": 210,
+    "delinquency_12m": 0
+   }
+  },
+  "CJ대한통운": {
+   "grade": {
+    "grade": "A",
+    "css_score": 82,
+    "pd_1y_pct": 0.35,
+    "as_of": "2026-09-20"
+   },
+   "relationship": {
+    "relationship_since": "2010",
+    "existing_loans_krw_100m": 1200,
+    "deposits_krw_100m": 900,
+    "delinquency_12m": 0
+   }
+  },
+  "호텔신라": {
+   "grade": {
+    "grade": "A-",
+    "css_score": 76,
+    "pd_1y_pct": 0.55,
+    "as_of": "2026-09-20"
+   },
+   "relationship": {
+    "relationship_since": "2008",
+    "existing_loans_krw_100m": 900,
+    "deposits_krw_100m": 600,
+    "delinquency_12m": 0
+   }
+  },
+  "오리온": {
+   "grade": {
+    "grade": "AA",
+    "css_score": 91,
+    "pd_1y_pct": 0.08,
+    "as_of": "2026-09-20"
+   },
+   "relationship": {
+    "relationship_since": "2017",
+    "existing_loans_krw_100m": 300,
+    "deposits_krw_100m": 1500,
+    "delinquency_12m": 0
+   }
+  },
+  "카카오": {
+   "grade": {
+    "grade": "A",
+    "css_score": 80,
+    "pd_1y_pct": 0.4,
+    "as_of": "2026-09-20"
+   },
+   "relationship": {
+    "relationship_since": "2019",
+    "existing_loans_krw_100m": 600,
+    "deposits_krw_100m": 2200,
+    "delinquency_12m": 0
+   }
+  },
+  "이마트": {
+   "grade": {
+    "grade": "A-",
+    "css_score": 74,
+    "pd_1y_pct": 0.6,
+    "as_of": "2026-09-20"
+   },
+   "relationship": {
+    "relationship_since": "2011",
+    "existing_loans_krw_100m": 1500,
+    "deposits_krw_100m": 800,
+    "delinquency_12m": 0
+   }
+  }
+ }
+}
